@@ -286,14 +286,14 @@
 <style type="text/less" lang="less">
   @white:#fff;
   @title:#252932;
-  @list:#252932;
+  @listColor:#252932;
   #leftSide{
     position:fixed;
     top:0;
     left:0;
     bottom:0;
     width:18%;
-
+    background:@listColor;
     .title{
       background:@title;
       a{
@@ -310,7 +310,7 @@
     }
 
     .list{
-      background:@list;
+      background:@listColor;
       >a{
         position:relative;
         span{

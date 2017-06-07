@@ -40,7 +40,7 @@ module.exports = {
       {
         test: /\.css$/,
         loader: 'style-loader!css-loader',
-        include: [resolve('src'), resolve('test')]
+        // include: [resolve('src'), resolve('test')]
       },
       {
         test: /\.less$/,

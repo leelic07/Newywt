@@ -14,7 +14,7 @@
               </div>
               <!-- /.input group -->
             </div>
-            <div class="col-xs-1 centerLine"><b class="pull-left">-</b></div>
+            <div class="col-xs-1 centerLine"><b class="pull-left">&macr;</b></div>
             <div class="form-group col-xs-11">
               <div class="input-group date">
                 <input type="text" class="form-control pull-right" id="datepicker1">
@@ -66,9 +66,61 @@
           </div>
         </div>
       </div>
+
       <div class="col-xs-24 buttonBox">
         <button class="btn btn-flat pull-left">新增菜单</button>
         <button class="btn btn-flat pull-right">批量删除</button>
+      </div>
+
+      <div class="col-xs-24 menuTable">
+        <table class="table table-responsive table-bordered text-center">
+          <thead>
+            <tr>
+              <th class="col-xs-1">
+                <div class="selectBox active"></div>
+              </th>
+              <th>1</th>
+              <th>1</th>
+              <th>1</th>
+              <th>1</th>
+              <th>1</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="selectBox active"></div>
+              </td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="selectBox active"></div>
+              </td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="selectBox active"></div>
+              </td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!--<Page></Page>-->
       </div>
     </div>
 
@@ -78,12 +130,17 @@
 </template>
 
 <script>
+//  import Page from '@/components/Paginator/Paginator'
+
   export default {
     data() {
         return {
 
         }
     },
+//    components:{
+//      Page
+//    },
     mounted(){
 //      $(function () {
         //Initialize Select2 Elements
@@ -163,6 +220,7 @@
   @white:#fff;
   @btnBlue:#6495ED;
   @btnRed:#E72E4D;
+  @gray:#F7F7F7;
   /**{*/
     /*border:1px solid #000;*/
   /*}*/
@@ -174,17 +232,17 @@
       >div{
         &:first-child{
           background:#F7F7F7;
-          padding:10px 25px;
+          padding:15px 30px 35px 30px;
           border:1px solid #E6E6E6;
         }
         >div{
-          margin-top:15px;
+          margin-top:35px;
         }
       }
       .centerLine{
         b{
-          margin-left:28%;
-          margin-top:5px;
+          margin-left:32%;
+          margin-top:12px;
         }
       }
 
@@ -202,9 +260,12 @@
       }
 
       .searchBox{
+        input{
+          height:38px;
+        }
         .searchBtn{
           background:@btnBlue;
-          height:33px;
+          height:36px;
           border:none;
           color:@white;
         }
@@ -212,10 +273,10 @@
 
       .buttonBox{
         margin-top:20px;
-        margin-bottom:15px;
+        margin-bottom:20px;
         button{
           width:107px;
-          height:35px;
+          height:38px;
           color:@white;
           &:first-child{
             background:@btnBlue;
@@ -226,6 +287,24 @@
         }
       }
 
+      .menuTable{
+        thead{
+          tr{
+            background:@gray;
+          }
+        }
+        .selectBox{
+          width:14px;
+          height:14px;
+          border:1px solid ;
+          border-radius:1px;
+          margin-left:30%;
+        }
+        .active{
+          border-color:#FF5050;
+          box-shadow:0 0 3px 0 #FF5050;
+        }
+      }
 
     }
   }

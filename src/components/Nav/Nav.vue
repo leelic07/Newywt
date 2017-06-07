@@ -14,8 +14,8 @@
       <div class="col-xs-3 user">
         <div class="col-xs-24">
           <a href="#" class="col-xs-24 pull-left">
-            Administration
-            <span class="pull-right glyphicon glyphicon-menu-down"></span>
+            <span class="pull-left">Administration</span>
+            <span class="pull-left glyphicon glyphicon-menu-down"></span>
           </a>
         </div>
       </div>
@@ -77,6 +77,9 @@
         span{
           margin-top:3px;
           /*margin-left:1%;*/
+          &:nth-child(2){
+            margin-left:5%;
+          }
         }
       }
     }
@@ -84,7 +87,7 @@
     .logout{
       a{
         color:#343434;
-        margin-top:20px;
+        margin-top:23px;
       }
     }
 
