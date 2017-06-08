@@ -203,7 +203,7 @@
       <router-link to="">狱务通信息管理平台</router-link>
     </div>
     <div class="col-xs-24 list">
-      <a href="#">系统匹配<span class="glyphicon glyphicon-menu-right"></span></a>
+      <a href="#" class="active">系统匹配<span class="glyphicon glyphicon-menu-right"></span></a>
       <ul class="clearfix">
         <li class="clearfix">
           <router-link to="">用户管理</router-link>
@@ -212,7 +212,7 @@
           <router-link to="">角色管理</router-link>
         </li>
         <li class="clearfix">
-          <router-link to="">菜单管理</router-link>
+          <router-link to="/menu_management">菜单管理</router-link>
         </li>
         <li class="clearfix">
           <router-link to="">监狱管理</router-link>
@@ -221,20 +221,17 @@
     </div>
     <div class="col-xs-24 list">
       <a href="#">家属管理<span class="glyphicon glyphicon-menu-right"></span></a>
-      <!--<ul class="clearfix">-->
-        <!--<li class="clearfix">-->
-          <!--<router-link to="">用户管理</router-link>-->
-        <!--</li>-->
-        <!--<li class="clearfix">-->
-          <!--<router-link to="">角色管理</router-link>-->
-        <!--</li>-->
-        <!--<li class="clearfix">-->
-          <!--<router-link to="">菜单管理</router-link>-->
-        <!--</li>-->
-        <!--<li class="clearfix">-->
-          <!--<router-link to="">监狱管理</router-link>-->
-        <!--</li>-->
-      <!--</ul>-->
+      <ul class="clearfix">
+        <li class="clearfix">
+          <router-link to="">登录统计</router-link>
+        </li>
+        <li class="clearfix">
+          <router-link to="">注册统计</router-link>
+        </li>
+        <li class="clearfix">
+          <router-link to="">余额统计</router-link>
+        </li>
+      </ul>
     </div>
     <div class="col-xs-24 list">
       <a href="#">订单管理<span class="glyphicon glyphicon-menu-right"></span></a>
@@ -291,9 +288,14 @@
     position:fixed;
     top:0;
     left:0;
-    bottom:0;
+    /*bottom:0;*/
     width:18%;
     background:@listColor;
+    a{
+      &:hover{
+        text-decoration:none;
+      }
+    }
     .title{
       background:@title;
       a{
@@ -311,6 +313,11 @@
 
     .list{
       background:@listColor;
+      .active{
+        background:#6495ED;
+        color:@white;
+
+      }
       >a{
         position:relative;
         span{
@@ -324,7 +331,7 @@
         width:100%;
         color:#9B9B9C;
         text-align:center;
-        height:45px;
+        height:48px;
         line-height:45px;
         border-bottom:2px solid #393D49;
         &:hover{

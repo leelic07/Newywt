@@ -73,58 +73,128 @@
       </div>
 
       <div class="col-xs-24 menuTable">
-        <table class="table table-responsive table-bordered text-center">
+        <table class="table table-responsive table-bordered">
           <thead>
             <tr>
               <th class="col-xs-1">
                 <div class="selectBox active"></div>
               </th>
-              <th>1</th>
-              <th>1</th>
-              <th>1</th>
-              <th>1</th>
-              <th>1</th>
+              <th>序号</th>
+              <th>菜单名称</th>
+              <th>菜单类型</th>
+              <th>父级菜单名称</th>
+              <th>访问路径</th>
+              <th colspan="2">操作</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>
-                <div class="selectBox active"></div>
+                <div class="selectBox"></div>
               </td>
               <td>2</td>
               <td>2</td>
               <td>2</td>
               <td>2</td>
               <td>2</td>
+              <td>
+                <a href="#" class="textBlue">编辑</a>
+                <a href="#" class="textRed">删除</a>
+              </td>
             </tr>
             <tr>
               <td>
-                <div class="selectBox active"></div>
+                <div class="selectBox"></div>
               </td>
               <td>2</td>
               <td>2</td>
               <td>2</td>
               <td>2</td>
               <td>2</td>
+              <td>
+                <a href="#" class="textBlue">编辑</a>
+                <a href="#" class="textRed">删除</a>
+              </td>
             </tr>
             <tr>
               <td>
-                <div class="selectBox active"></div>
+                <div class="selectBox"></div>
               </td>
               <td>2</td>
               <td>2</td>
               <td>2</td>
               <td>2</td>
               <td>2</td>
+              <td>
+                <a href="#" class="textBlue">编辑</a>
+                <a href="#" class="textRed">删除</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="selectBox"></div>
+              </td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>
+                <a href="#" class="textBlue">编辑</a>
+                <a href="#" class="textRed">删除</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="selectBox"></div>
+              </td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>
+                <a href="#" class="textBlue">编辑</a>
+                <a href="#" class="textRed">删除</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="selectBox"></div>
+              </td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>
+                <a href="#" class="textBlue">编辑</a>
+                <a href="#" class="textRed">删除</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="selectBox"></div>
+              </td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>
+                <a href="#" class="textBlue">编辑</a>
+                <a href="#" class="textRed">删除</a>
+              </td>
             </tr>
           </tbody>
         </table>
 
         <!--<Page></Page>-->
+        <div class="tableFooter col-xs-24">
+
+        </div>
       </div>
     </div>
-
-
 
   </div>
 </template>
@@ -221,6 +291,8 @@
   @btnBlue:#6495ED;
   @btnRed:#E72E4D;
   @gray:#F7F7F7;
+  @textRed:#E9445D;
+  @textBlue:#6495ED;
   /**{*/
     /*border:1px solid #000;*/
   /*}*/
@@ -232,11 +304,11 @@
       >div{
         &:first-child{
           background:#F7F7F7;
-          padding:15px 30px 35px 30px;
+          padding:10px 30px 15px 30px;
           border:1px solid #E6E6E6;
         }
         >div{
-          margin-top:35px;
+          margin-top:20px;
         }
       }
       .centerLine{
@@ -288,24 +360,64 @@
       }
 
       .menuTable{
-        thead{
-          tr{
-            background:@gray;
+        position:relative;
+        margin-bottom:75px;
+        .table{
+          margin-bottom:0;
+          color:#929292;
+          /*a{*/
+            /*&:hover{*/
+              /*text-decoration:none;*/
+            /*}*/
+          /*}*/
+          .textBlue{
+            color:@textBlue;
+          }
+          .textRed{
+            color:@textRed;
+          }
+          thead{
+            tr{
+              background:@gray;
+            }
+          }
+
+          tbody{
+            tr{
+              td{
+                a{
+                  &:nth-child(2){
+                    margin-left:20%;
+                  }
+                }
+              }
+            }
+          }
+          .selectBox{
+            width:15px;
+            height:15px;
+            border:1px solid #C9C9C9;
+            border-radius:1px;
+            margin-left:25%;
+          }
+          .active{
+            border-color:#FF5050;
+            box-shadow:0 0 3px 0 #FF5050;
+            background:url(../../../static/images/boxActive.png) no-repeat center;
           }
         }
-        .selectBox{
-          width:14px;
-          height:14px;
-          border:1px solid ;
-          border-radius:1px;
-          margin-left:30%;
-        }
-        .active{
-          border-color:#FF5050;
-          box-shadow:0 0 3px 0 #FF5050;
+
+        .tableFooter{
+          position:absolute;
+          bottom:-55px;
+          background:@gray;
+          height:55px;
+          border:1px solid #ddd;
+          border-top:0;
+          -webkit-border-radius-bottomleft:3px;
+          -webkit-border-radius-bottomright:3px;
         }
       }
-
     }
   }
 </style>
