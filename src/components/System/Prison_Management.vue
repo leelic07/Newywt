@@ -5,7 +5,7 @@
       <ol class="breadcrumb col-xs-24">
         <!--<li><a href="#">Home</a></li>-->
         <li>系统配置</li>
-        <li class="active">菜单管理</li>
+        <li class="active">监狱管理</li>
       </ol>
 
       <div class="col-xs-24">
@@ -33,23 +33,23 @@
           </div>
 
           <div class="col-xs-14 menuType">
-            <div class="form-group col-xs-24">
+            <!--<div class="form-group col-xs-24">-->
 
-              <div class="col-xs-4">
-                <label class="pull-left">菜单类型</label>
-              </div>
+              <!--<div class="col-xs-4">-->
+                <!--<label class="pull-left">菜单类型</label>-->
+              <!--</div>-->
 
-              <div class="col-xs-5">
-                <select class="form-control">
-                  <option>一级菜单</option>
-                  <option>二级菜单</option>
-                  <option>三级菜单</option>
-                  <option>四级菜单</option>
-                  <option>五级菜单</option>
-                </select>
-              </div>
+              <!--<div class="col-xs-5">-->
+                <!--<select class="form-control">-->
+                  <!--<option>一级菜单</option>-->
+                  <!--<option>二级菜单</option>-->
+                  <!--<option>三级菜单</option>-->
+                  <!--<option>四级菜单</option>-->
+                  <!--<option>五级菜单</option>-->
+                <!--</select>-->
+              <!--</div>-->
 
-            </div>
+            <!--</div>-->
           </div>
 
         </div>
@@ -64,7 +64,7 @@
 
           <div class="form-group col-xs-10">
             <div class="col-xs-20">
-              <input type="text" class="form-control" placeholder="输入菜单名称进行查询">
+              <input type="text" class="form-control" placeholder="输入监狱名称进行查询">
             </div>
             <div class="col-xs-3">
               <button class="btn btn-block glyphicon glyphicon-search pull-left searchBtn"></button>
@@ -74,7 +74,7 @@
       </div>
 
       <div class="col-xs-24 buttonBox">
-        <button class="btn btn-flat pull-left" @click="addMenu()">新增菜单</button>
+        <button class="btn btn-flat pull-left" @click="addPrison()">新增监狱</button>
         <button class="btn btn-flat pull-right">批量删除</button>
       </div>
 
@@ -86,10 +86,14 @@
               <div class="selectBox active"></div>
             </th>
             <th>序号</th>
-            <th>菜单名称</th>
-            <th>菜单类型</th>
-            <th>父级菜单名称</th>
-            <th>访问路径</th>
+            <th>监狱名称</th>
+            <th>监狱描述</th>
+            <th>详细地址</th>
+            <th>所属省</th>
+            <th>所属市</th>
+            <th>所属区</th>
+            <th>邮政编码</th>
+            <th>监狱用户</th>
             <th colspan="2">操作</th>
           </tr>
           </thead>
@@ -103,16 +107,6 @@
             <td>2</td>
             <td>2</td>
             <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
@@ -130,16 +124,6 @@
             <td>2</td>
             <td>2</td>
             <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
@@ -159,6 +143,28 @@
             <td>2</td>
             <td>2</td>
             <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>
+              <a href="#" class="textBlue">编辑</a>
+              <a href="#" class="textRed">删除</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="selectBox"></div>
+            </td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
             <td>
               <a href="#" class="textBlue">编辑</a>
               <a href="#" class="textRed">删除</a>
@@ -173,6 +179,10 @@
             <td>2</td>
             <td>2</td>
             <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
             <td>
               <a href="#" class="textBlue">编辑</a>
               <a href="#" class="textRed">删除</a>
@@ -182,6 +192,28 @@
             <td>
               <div class="selectBox"></div>
             </td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>
+              <a href="#" class="textBlue">编辑</a>
+              <a href="#" class="textRed">删除</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="selectBox"></div>
+            </td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
@@ -206,26 +238,21 @@
 </template>
 
 <script>
-  //  import Page from '@/components/Paginator/Paginator'
-
   export default {
-    data() {
+    data(){
       return {
         isManage:true,
         toUrl:'',
         fromUrl:''
       }
     },
-//    components:{
-//      Page
-//    },
     watch:{
       $route(to, from) {//监听路由变化
         this.toUrl = to.path;
         this.fromUrl = from.path;
       },
       toUrl() {
-        const editUrl = '/menu_management/add_menu';
+        const editUrl = '/prison_management/add_prison';
 //        const index = editUrl.lastIndexOf('/');
 //        if (this.toUrl.substring(0, index) == "/crimsearch/edit") {//进入编辑页面
 //          this.isManage = false;//将管理页隐藏
@@ -233,28 +260,30 @@
 //          this.isManage = true;
 //        }
 
-        if (this.toUrl == '/menu_management/add_menu') {
+        if (this.toUrl == '/prison_management/add_prison') {
           this.isManage = false;
         } else {
           this.isManage = true;
         }
       },
       fromUrl() {
-        const editUrl = '/menu_management/add_menu';
-        if(this.fromUrl == '/menu_management/add_menu'){
-
+        const editUrl = '/prison_management/add_prison';
+        if(this.fromUrl == '/prison_management/add_prison') {
+//          this.isManage = false;
         }
+//        else {
+//          this.isManage = true;
+//        }
       }
     },
     methods:{
-      addMenu(){
+      addPrison(){
           this.$router.push({
-            path:'/menu_management/add_menu'
+            path:'/prison_management/add_prison'
           })
       }
     },
     mounted(){
-//
       //Date picker
       $('#datepicker').datepicker({
         autoclose: true
@@ -287,9 +316,6 @@
   @lightGray:#F4F4F4;
   @textRed: #E9445D;
   @textBlue: #6495ED;
-  /**{*/
-  /*border:1px solid #000;*/
-  /*}*/
   #menuManagement {
     .menuContent {
       width: @contentWidth;

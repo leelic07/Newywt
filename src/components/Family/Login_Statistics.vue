@@ -1,15 +1,16 @@
 <template>
-  <div id="menuManagement" class="row">
-    <div class="menuContent clearfix" v-if="isManage">
+  <div id="loginStatistics" class="row">
+    <div class="loginStatisticsContent clearfix" v-if="isManage">
 
       <ol class="breadcrumb col-xs-24">
         <!--<li><a href="#">Home</a></li>-->
-        <li>系统配置</li>
-        <li class="active">菜单管理</li>
+        <li>家属管理</li>
+        <li class="active">登录统计</li>
       </ol>
 
       <div class="col-xs-24">
         <div class="col-xs-24">
+
           <div class="col-xs-10">
             <div class="form-group col-xs-11">
               <div class="input-group date">
@@ -32,165 +33,75 @@
             </div>
           </div>
 
-          <div class="col-xs-14 menuType">
-            <div class="form-group col-xs-24">
-
-              <div class="col-xs-4">
-                <label class="pull-left">菜单类型</label>
-              </div>
-
-              <div class="col-xs-5">
-                <select class="form-control">
-                  <option>一级菜单</option>
-                  <option>二级菜单</option>
-                  <option>三级菜单</option>
-                  <option>四级菜单</option>
-                  <option>五级菜单</option>
-                </select>
-              </div>
-
-            </div>
-          </div>
-
         </div>
 
         <div class="col-xs-24 searchBox">
-          <!--<div class="input-group input-group-sm col-xs-10">-->
-          <!--<input type="text" class="form-control">-->
-          <!--<span class="input-group-btn">-->
-          <!--<button type="button" class="btn btn-info btn-flat">Go!</button>-->
-          <!--</span>-->
-          <!--</div>-->
 
           <div class="form-group col-xs-10">
             <div class="col-xs-20">
-              <input type="text" class="form-control" placeholder="输入菜单名称进行查询">
+              <input type="text" class="form-control" placeholder="输入监狱名称进行查询">
             </div>
             <div class="col-xs-3">
               <button class="btn btn-block glyphicon glyphicon-search pull-left searchBtn"></button>
             </div>
           </div>
+
         </div>
       </div>
 
-      <div class="col-xs-24 buttonBox">
-        <button class="btn btn-flat pull-left" @click="addMenu()">新增菜单</button>
-        <button class="btn btn-flat pull-right">批量删除</button>
-      </div>
 
-      <div class="col-xs-24 menuTable">
-        <table class="table table-responsive table-bordered">
+      <div class="col-xs-24 balanceTable">
+        <table class="table table-responsive table-bordered text-center">
           <thead>
           <tr>
-            <th class="col-xs-1">
-              <div class="selectBox active"></div>
-            </th>
             <th>序号</th>
-            <th>菜单名称</th>
-            <th>菜单类型</th>
-            <th>父级菜单名称</th>
-            <th>访问路径</th>
-            <th colspan="2">操作</th>
+            <th>日期</th>
+            <th>登录人数</th>
+            <th>所属监狱名称</th>
           </tr>
           </thead>
           <tbody>
           <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
           </tr>
           <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
           </tr>
           <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
           </tr>
           <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
           </tr>
           <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
           </tr>
           <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
           </tr>
           <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
           </tr>
           </tbody>
         </table>
@@ -206,8 +117,6 @@
 </template>
 
 <script>
-  //  import Page from '@/components/Paginator/Paginator'
-
   export default {
     data() {
       return {
@@ -216,16 +125,13 @@
         fromUrl:''
       }
     },
-//    components:{
-//      Page
-//    },
-    watch:{
+    watch: {
       $route(to, from) {//监听路由变化
         this.toUrl = to.path;
         this.fromUrl = from.path;
       },
       toUrl() {
-        const editUrl = '/menu_management/add_menu';
+        const editUrl = '/role_management/set_authority';
 //        const index = editUrl.lastIndexOf('/');
 //        if (this.toUrl.substring(0, index) == "/crimsearch/edit") {//进入编辑页面
 //          this.isManage = false;//将管理页隐藏
@@ -233,28 +139,27 @@
 //          this.isManage = true;
 //        }
 
-        if (this.toUrl == '/menu_management/add_menu') {
+        if (this.toUrl == '/role_management/set_authority' || this.toUrl == '/role_management/add_role') {
           this.isManage = false;
         } else {
           this.isManage = true;
         }
       },
       fromUrl() {
-        const editUrl = '/menu_management/add_menu';
-        if(this.fromUrl == '/menu_management/add_menu'){
+        const editUrl = '/role_management/set_authority';
+        if(this.fromUrl == '/role_management/set_authority'){
 
         }
       }
     },
     methods:{
-      addMenu(){
-          this.$router.push({
-            path:'/menu_management/add_menu'
-          })
+      addRole(){
+        this.$router.push({
+          path:'/role_management/add_role'
+        })
       }
     },
     mounted(){
-//
       //Date picker
       $('#datepicker').datepicker({
         autoclose: true
@@ -287,11 +192,12 @@
   @lightGray:#F4F4F4;
   @textRed: #E9445D;
   @textBlue: #6495ED;
+  @textOrange:#DB823D;
   /**{*/
   /*border:1px solid #000;*/
   /*}*/
-  #menuManagement {
-    .menuContent {
+  #loginStatistics {
+    .loginStatisticsContent {
       width: @contentWidth;
       margin-left: @marginLeft;
       margin-top: 20px;
@@ -356,9 +262,10 @@
         }
       }
 
-      .menuTable {
+      .balanceTable {
         position: relative;
         margin-bottom: 75px;
+        margin-top:30px;
         .table {
           margin-bottom: 0;
           color: #929292;
@@ -373,6 +280,9 @@
           .textRed {
             color: @textRed;
           }
+          .textOrange {
+            color: @textOrange;
+          }
           thead {
             tr {
               background: @gray;
@@ -382,9 +292,17 @@
           tbody {
             tr {
               td {
-                a {
-                  &:nth-child(2) {
-                    margin-left: 20%;
+                &:last-child{
+                  a {
+                    /*&:nth-child(2) {*/
+                    /*margin-left: 20%;*/
+                    /*}*/
+                    &:first-child{
+                      margin-right:20%;
+                    }
+                    &:nth-child(3){
+                      margin-left:20%;
+                    }
                   }
                 }
               }

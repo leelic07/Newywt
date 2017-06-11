@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <LeftSide v-if="true"></LeftSide>
-    <Nav></Nav>
+    <LeftSide v-if="isNotLogin"></LeftSide>
+    <Nav v-if="isNotLogin"></Nav>
     <router-view></router-view>
   </div>
 </template>
@@ -9,7 +9,6 @@
 <script>
 import LeftSide from '@/components/LeftSide/Left_Side.vue'
 import Nav from '@/components/Nav/Nav.vue'
-
 
 export default {
   name: 'app',

@@ -11,7 +11,7 @@
 
     <div class="row loginBox">
       <div class="col-xs-24">
-        <div class="col-xs-6 col-xs-push-14">
+        <div class="col-xs-5 col-xs-push-14">
           <div class="col-xs-24">
             <p>用户登录</p>
           </div>
@@ -57,12 +57,14 @@
 
 <style type="text/less" lang="less" scoped>
   @white:#fff;
+  @inputGray:#999;
   /**{*/
     /*border:1px solid #000;*/
   /*}*/
   #login{
     .logo{
-      padding:18px 0 18px 0;
+      /*padding:18px 0 18px 0;*/
+      margin-top:5%;
       >div{
         &:first-child{
           padding-right:1%;
@@ -87,6 +89,7 @@
         &:first-child {
           background:url(../../../static/images/login-background.png) no-repeat center;
           height:500px;
+          margin-top:1%;
           >div {
             margin-top:100px;
             background:#47515B;
@@ -113,9 +116,7 @@
           border-radius:2px;
           margin-top:10px;
           height:40px;
-          &:focus{
-
-          }
+          color:@inputGray;
         }
       }
 
@@ -134,7 +135,7 @@
     }
 
     .footer {
-      margin-top:10px;
+      margin-top:2%;
       p {
         color:#A0A0A0;
       }

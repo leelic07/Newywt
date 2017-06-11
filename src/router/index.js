@@ -3,6 +3,18 @@ import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import Login from '@/components/Login/Login'
 import MenuManagement from '@/components/System/Menu_Management'
+import AddMenu from '@/components/System/Add_Menu'
+import RoleManagement from '@/components/System/Role_Management'
+import SetAuthority from '@/components/System/Set_Authority'
+import PrisonManagement from '@/components/System/Prison_Management'
+import AddPrison from '@/components/System/Add_Prison'
+import AddRole from '@/components/System/Add_Role'
+import UserManagement from '@/components/System/User_Management'
+import EditUser from '@/components/System/Edit_User'
+import AddUser from '@/components/System/Add_User'
+import BalanceStatistics from '@/components/Family/Balance_Statistics'
+import RegistrationStatistics from '@/components/Family/Registration_Statistics'
+import LoginStatistics from '@/components/Family/Login_Statistics'
 
 Vue.use(Router)
 
@@ -19,7 +31,58 @@ export default new Router({
     },
     {
       path:'/menu_management',
-      component:MenuManagement
+      component:MenuManagement,
+      children:[{
+        path:'/menu_management/add_menu',
+        component:AddMenu
+      }]
+    },
+    // {
+    //   path:'/add_menu',
+    //   component:AddMenu
+    // },
+    {
+      path:'/role_management',
+      component:RoleManagement,
+      children:[{
+        path:'/role_management/set_authority',
+        component:SetAuthority
+      },{
+        path:'/role_management/add_role',
+        component:AddRole
+      }]
+    },
+    {
+      path:'/prison_management',
+      component:PrisonManagement,
+      children:[{
+        path:'/prison_management/add_prison',
+        component:AddPrison
+      }]
+    },
+    {
+      path:'/user_management',
+      component:UserManagement,
+      children:[{
+        path:'/user_management/edit_user',
+        component:EditUser
+      },
+        {
+          path:'/user_management/add_user',
+          component:AddUser
+        }]
+    },
+    {
+      path:'/balance_statistics',
+      component:BalanceStatistics
+    },
+    {
+      path:'/registration_statistics',
+      component:RegistrationStatistics
+    },
+    {
+      path:'/login_statistics',
+      component:LoginStatistics
     },
     {
       path:'*',

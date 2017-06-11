@@ -1,11 +1,8 @@
 <template>
   <div id="topNav" class="row">
     <div class="col-xs-24">
-      <ol class="breadcrumb col-xs-16">
-        <!--<li><a href="#">Home</a></li>-->
-        <li>系统配置</li>
-        <li class="active">菜单管理</li>
-      </ol>
+      <div class="col-xs-16"></div>
+
       <div class="col-xs-2">
         <div class="photo">
 
@@ -95,7 +92,7 @@
       width:95%;
       margin-top:10px;
       margin-left:@marginLeft;
-      border-bottom:1px solid #F0F0F0;
+      border-bottom:2px solid #F0F0F0;
     }
   }
 </style>

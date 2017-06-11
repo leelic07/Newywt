@@ -1,11 +1,11 @@
 <template>
-  <div id="menuManagement" class="row">
-    <div class="menuContent clearfix" v-if="isManage">
+  <div id="roleManagement" class="row">
+    <div class="roleManagementContent clearfix" v-if="isManage">
 
       <ol class="breadcrumb col-xs-24">
         <!--<li><a href="#">Home</a></li>-->
         <li>系统配置</li>
-        <li class="active">菜单管理</li>
+        <li class="active">角色管理</li>
       </ol>
 
       <div class="col-xs-24">
@@ -33,23 +33,23 @@
           </div>
 
           <div class="col-xs-14 menuType">
-            <div class="form-group col-xs-24">
+            <!--<div class="form-group col-xs-24">-->
 
-              <div class="col-xs-4">
-                <label class="pull-left">菜单类型</label>
-              </div>
+              <!--<div class="col-xs-4">-->
+                <!--<label class="pull-left">菜单类型</label>-->
+              <!--</div>-->
 
-              <div class="col-xs-5">
-                <select class="form-control">
-                  <option>一级菜单</option>
-                  <option>二级菜单</option>
-                  <option>三级菜单</option>
-                  <option>四级菜单</option>
-                  <option>五级菜单</option>
-                </select>
-              </div>
+              <!--<div class="col-xs-5">-->
+                <!--<select class="form-control">-->
+                  <!--<option>一级菜单</option>-->
+                  <!--<option>二级菜单</option>-->
+                  <!--<option>三级菜单</option>-->
+                  <!--<option>四级菜单</option>-->
+                  <!--<option>五级菜单</option>-->
+                <!--</select>-->
+              <!--</div>-->
 
-            </div>
+            <!--</div>-->
           </div>
 
         </div>
@@ -64,7 +64,7 @@
 
           <div class="form-group col-xs-10">
             <div class="col-xs-20">
-              <input type="text" class="form-control" placeholder="输入菜单名称进行查询">
+              <input type="text" class="form-control" placeholder="输入角色名称进行查询">
             </div>
             <div class="col-xs-3">
               <button class="btn btn-block glyphicon glyphicon-search pull-left searchBtn"></button>
@@ -74,7 +74,7 @@
       </div>
 
       <div class="col-xs-24 buttonBox">
-        <button class="btn btn-flat pull-left" @click="addMenu()">新增菜单</button>
+        <button class="btn btn-flat pull-left" @click="addRole()">新增角色</button>
         <button class="btn btn-flat pull-right">批量删除</button>
       </div>
 
@@ -86,11 +86,9 @@
               <div class="selectBox active"></div>
             </th>
             <th>序号</th>
-            <th>菜单名称</th>
-            <th>菜单类型</th>
-            <th>父级菜单名称</th>
-            <th>访问路径</th>
-            <th colspan="2">操作</th>
+            <th>角色名</th>
+            <th>角色描述</th>
+            <th colspan="3">操作</th>
           </tr>
           </thead>
           <tbody>
@@ -101,10 +99,10 @@
             <td>2</td>
             <td>2</td>
             <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
+            <td class="text-center col-xs-6">
               <a href="#" class="textBlue">编辑</a>
+              <!--<a href="#" class="textOrange">设置权限</a>-->
+              <router-link to="/role_management/set_authority" class="textOrange">设置权限</router-link>
               <a href="#" class="textRed">删除</a>
             </td>
           </tr>
@@ -115,10 +113,9 @@
             <td>2</td>
             <td>2</td>
             <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
+            <td class="text-center">
               <a href="#" class="textBlue">编辑</a>
+              <a href="#" class="textOrange">设置权限</a>
               <a href="#" class="textRed">删除</a>
             </td>
           </tr>
@@ -129,10 +126,9 @@
             <td>2</td>
             <td>2</td>
             <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
+            <td class="text-center">
               <a href="#" class="textBlue">编辑</a>
+              <a href="#" class="textOrange">设置权限</a>
               <a href="#" class="textRed">删除</a>
             </td>
           </tr>
@@ -143,10 +139,9 @@
             <td>2</td>
             <td>2</td>
             <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
+            <td class="text-center">
               <a href="#" class="textBlue">编辑</a>
+              <a href="#" class="textOrange">设置权限</a>
               <a href="#" class="textRed">删除</a>
             </td>
           </tr>
@@ -157,10 +152,9 @@
             <td>2</td>
             <td>2</td>
             <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
+            <td class="text-center">
               <a href="#" class="textBlue">编辑</a>
+              <a href="#" class="textOrange">设置权限</a>
               <a href="#" class="textRed">删除</a>
             </td>
           </tr>
@@ -171,10 +165,9 @@
             <td>2</td>
             <td>2</td>
             <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
+            <td class="text-center">
               <a href="#" class="textBlue">编辑</a>
+              <a href="#" class="textOrange">设置权限</a>
               <a href="#" class="textRed">删除</a>
             </td>
           </tr>
@@ -185,10 +178,9 @@
             <td>2</td>
             <td>2</td>
             <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
+            <td class="text-center">
               <a href="#" class="textBlue">编辑</a>
+              <a href="#" class="textOrange">设置权限</a>
               <a href="#" class="textRed">删除</a>
             </td>
           </tr>
@@ -206,8 +198,6 @@
 </template>
 
 <script>
-  //  import Page from '@/components/Paginator/Paginator'
-
   export default {
     data() {
       return {
@@ -216,16 +206,13 @@
         fromUrl:''
       }
     },
-//    components:{
-//      Page
-//    },
-    watch:{
+    watch: {
       $route(to, from) {//监听路由变化
         this.toUrl = to.path;
         this.fromUrl = from.path;
       },
       toUrl() {
-        const editUrl = '/menu_management/add_menu';
+        const editUrl = '/role_management/set_authority';
 //        const index = editUrl.lastIndexOf('/');
 //        if (this.toUrl.substring(0, index) == "/crimsearch/edit") {//进入编辑页面
 //          this.isManage = false;//将管理页隐藏
@@ -233,28 +220,27 @@
 //          this.isManage = true;
 //        }
 
-        if (this.toUrl == '/menu_management/add_menu') {
+        if (this.toUrl == '/role_management/set_authority' || this.toUrl == '/role_management/add_role') {
           this.isManage = false;
         } else {
           this.isManage = true;
         }
       },
       fromUrl() {
-        const editUrl = '/menu_management/add_menu';
-        if(this.fromUrl == '/menu_management/add_menu'){
+        const editUrl = '/role_management/set_authority';
+        if(this.fromUrl == '/role_management/set_authority'){
 
         }
       }
     },
     methods:{
-      addMenu(){
+      addRole(){
           this.$router.push({
-            path:'/menu_management/add_menu'
+            path:'/role_management/add_role'
           })
       }
     },
     mounted(){
-//
       //Date picker
       $('#datepicker').datepicker({
         autoclose: true
@@ -287,11 +273,12 @@
   @lightGray:#F4F4F4;
   @textRed: #E9445D;
   @textBlue: #6495ED;
+  @textOrange:#DB823D;
   /**{*/
   /*border:1px solid #000;*/
   /*}*/
-  #menuManagement {
-    .menuContent {
+  #roleManagement {
+    .roleManagementContent {
       width: @contentWidth;
       margin-left: @marginLeft;
       margin-top: 20px;
@@ -373,6 +360,9 @@
           .textRed {
             color: @textRed;
           }
+          .textOrange {
+            color: @textOrange;
+          }
           thead {
             tr {
               background: @gray;
@@ -382,9 +372,17 @@
           tbody {
             tr {
               td {
-                a {
-                  &:nth-child(2) {
-                    margin-left: 20%;
+                &:last-child{
+                  a {
+                    /*&:nth-child(2) {*/
+                    /*margin-left: 20%;*/
+                    /*}*/
+                    &:first-child{
+                      margin-right:20%;
+                    }
+                    &:nth-child(3){
+                      margin-left:20%;
+                    }
                   }
                 }
               }

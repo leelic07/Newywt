@@ -1,16 +1,36 @@
 <template>
-  <div id="menuManagement" class="row">
-    <div class="menuContent clearfix" v-if="isManage">
+  <div id="userManagement" class="row">
+    <div class="userManagementContent clearfix" v-if="isManage">
 
       <ol class="breadcrumb col-xs-24">
         <!--<li><a href="#">Home</a></li>-->
         <li>系统配置</li>
-        <li class="active">菜单管理</li>
+        <li class="active">用户管理</li>
       </ol>
 
       <div class="col-xs-24">
         <div class="col-xs-24">
-          <div class="col-xs-10">
+          <div class="col-xs-3 menuType">
+            <div class="form-group col-xs-24">
+
+              <div class="col-xs-7">
+                <label class="pull-left">角色</label>
+              </div>
+
+              <div class="col-xs-14">
+                <select class="form-control">
+                  <option>全部</option>
+                  <!--<option>二级菜单</option>-->
+                  <!--<option>三级菜单</option>-->
+                  <!--<option>四级菜单</option>-->
+                  <!--<option>五级菜单</option>-->
+                </select>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-xs-10 col-xs-offset-1">
             <div class="form-group col-xs-11">
               <div class="input-group date">
                 <input type="text" class="form-control pull-right" id="datepicker">
@@ -32,26 +52,6 @@
             </div>
           </div>
 
-          <div class="col-xs-14 menuType">
-            <div class="form-group col-xs-24">
-
-              <div class="col-xs-4">
-                <label class="pull-left">菜单类型</label>
-              </div>
-
-              <div class="col-xs-5">
-                <select class="form-control">
-                  <option>一级菜单</option>
-                  <option>二级菜单</option>
-                  <option>三级菜单</option>
-                  <option>四级菜单</option>
-                  <option>五级菜单</option>
-                </select>
-              </div>
-
-            </div>
-          </div>
-
         </div>
 
         <div class="col-xs-24 searchBox">
@@ -61,10 +61,29 @@
           <!--<button type="button" class="btn btn-info btn-flat">Go!</button>-->
           <!--</span>-->
           <!--</div>-->
+          <div class="col-xs-3 menuType">
+            <div class="form-group col-xs-24">
 
-          <div class="form-group col-xs-10">
+              <div class="col-xs-7">
+                <label class="pull-left">状态</label>
+              </div>
+
+              <div class="col-xs-14">
+                <select class="form-control">
+                  <option>全部</option>
+                  <!--<option>二级菜单</option>-->
+                  <!--<option>三级菜单</option>-->
+                  <!--<option>四级菜单</option>-->
+                  <!--<option>五级菜单</option>-->
+                </select>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="form-group col-xs-10 col-xs-offset-1">
             <div class="col-xs-20">
-              <input type="text" class="form-control" placeholder="输入菜单名称进行查询">
+              <input type="text" class="form-control" placeholder="输入用户名称进行查询">
             </div>
             <div class="col-xs-3">
               <button class="btn btn-block glyphicon glyphicon-search pull-left searchBtn"></button>
@@ -74,24 +93,25 @@
       </div>
 
       <div class="col-xs-24 buttonBox">
-        <button class="btn btn-flat pull-left" @click="addMenu()">新增菜单</button>
+        <button class="btn btn-flat pull-left" @click="addUser()">新增用户</button>
         <button class="btn btn-flat pull-right">批量删除</button>
       </div>
 
       <div class="col-xs-24 menuTable">
         <table class="table table-responsive table-bordered">
           <thead>
-          <tr>
-            <th class="col-xs-1">
-              <div class="selectBox active"></div>
-            </th>
-            <th>序号</th>
-            <th>菜单名称</th>
-            <th>菜单类型</th>
-            <th>父级菜单名称</th>
-            <th>访问路径</th>
-            <th colspan="2">操作</th>
-          </tr>
+            <tr>
+              <th class="col-xs-1">
+                <div class="selectBox active"></div>
+              </th>
+              <th>序号</th>
+              <th>登录账号</th>
+              <th>姓名</th>
+              <th>邮箱</th>
+              <th>用户角色</th>
+              <th>用户状态</th>
+              <th colspan="2">操作</th>
+            </tr>
           </thead>
           <tbody>
           <tr>
@@ -103,8 +123,10 @@
             <td>2</td>
             <td>2</td>
             <td>2</td>
+            <td>2</td>
             <td>
-              <a href="#" class="textBlue">编辑</a>
+              <!--<a href="#" class="textBlue">编辑</a>-->
+              <router-link to="/user_management/edit_user" class="textBlue">编辑</router-link>
               <a href="#" class="textRed">删除</a>
             </td>
           </tr>
@@ -113,33 +135,6 @@
               <div class="selectBox"></div>
             </td>
             <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
@@ -159,6 +154,22 @@
             <td>2</td>
             <td>2</td>
             <td>2</td>
+            <td>2</td>
+            <td>
+              <a href="#" class="textBlue">编辑</a>
+              <a href="#" class="textRed">删除</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="selectBox"></div>
+            </td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
             <td>
               <a href="#" class="textBlue">编辑</a>
               <a href="#" class="textRed">删除</a>
@@ -173,6 +184,7 @@
             <td>2</td>
             <td>2</td>
             <td>2</td>
+            <td>2</td>
             <td>
               <a href="#" class="textBlue">编辑</a>
               <a href="#" class="textRed">删除</a>
@@ -182,6 +194,22 @@
             <td>
               <div class="selectBox"></div>
             </td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>
+              <a href="#" class="textBlue">编辑</a>
+              <a href="#" class="textRed">删除</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="selectBox"></div>
+            </td>
+            <td>2</td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
@@ -216,16 +244,13 @@
         fromUrl:''
       }
     },
-//    components:{
-//      Page
-//    },
-    watch:{
+    watch: {
       $route(to, from) {//监听路由变化
         this.toUrl = to.path;
         this.fromUrl = from.path;
       },
       toUrl() {
-        const editUrl = '/menu_management/add_menu';
+        const editUrl = '/user_management/edit_user';
 //        const index = editUrl.lastIndexOf('/');
 //        if (this.toUrl.substring(0, index) == "/crimsearch/edit") {//进入编辑页面
 //          this.isManage = false;//将管理页隐藏
@@ -233,23 +258,29 @@
 //          this.isManage = true;
 //        }
 
-        if (this.toUrl == '/menu_management/add_menu') {
+        if (this.toUrl == '/user_management/edit_user' || this.toUrl == '/user_management/add_user') {
           this.isManage = false;
         } else {
           this.isManage = true;
         }
       },
       fromUrl() {
-        const editUrl = '/menu_management/add_menu';
-        if(this.fromUrl == '/menu_management/add_menu'){
-
+        const editUrl = '/user_management/edit_user';
+        if(this.fromUrl == '/user_management/edit_user'){
+//          this.isManage = false;
         }
+//        else {
+//          this.isManage = true;
+//        }
       }
     },
+//    components:{
+//      Page
+//    },
     methods:{
-      addMenu(){
+      addUser(){
           this.$router.push({
-            path:'/menu_management/add_menu'
+            path:'/user_management/add_user'
           })
       }
     },
@@ -288,10 +319,10 @@
   @textRed: #E9445D;
   @textBlue: #6495ED;
   /**{*/
-  /*border:1px solid #000;*/
+    /*border:1px solid #000;*/
   /*}*/
-  #menuManagement {
-    .menuContent {
+  #userManagement {
+    .userManagementContent {
       width: @contentWidth;
       margin-left: @marginLeft;
       margin-top: 20px;
