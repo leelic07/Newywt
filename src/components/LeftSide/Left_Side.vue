@@ -36,10 +36,10 @@
     </div>
     <div class="col-xs-24 list">
       <a href="#">订单管理<span class="glyphicon glyphicon-menu-right"></span></a>
-      <!--<ul class="clearfix">-->
-        <!--<li class="clearfix">-->
-          <!--<router-link to="">用户管理</router-link>-->
-        <!--</li>-->
+      <ul class="clearfix">
+        <li class="clearfix">
+          <router-link to="/order_management">订单统计</router-link>
+        </li>
         <!--<li class="clearfix">-->
           <!--<router-link to="">角色管理</router-link>-->
         <!--</li>-->
@@ -49,24 +49,21 @@
         <!--<li class="clearfix">-->
           <!--<router-link to="">监狱管理</router-link>-->
         <!--</li>-->
-      <!--</ul>-->
+      </ul>
     </div>
     <div class="col-xs-24 list">
       <a href="#">数据管理<span class="glyphicon glyphicon-menu-right"></span></a>
-      <!--<ul class="clearfix">-->
-        <!--<li class="clearfix">-->
-          <!--<router-link to="">用户管理</router-link>-->
-        <!--</li>-->
-        <!--<li class="clearfix">-->
-          <!--<router-link to="">角色管理</router-link>-->
-        <!--</li>-->
-        <!--<li class="clearfix">-->
-          <!--<router-link to="">菜单管理</router-link>-->
-        <!--</li>-->
-        <!--<li class="clearfix">-->
-          <!--<router-link to="">监狱管理</router-link>-->
-        <!--</li>-->
-      <!--</ul>-->
+      <ul class="clearfix">
+        <li class="clearfix">
+          <router-link to="/commodity_data">商品数据导出</router-link>
+        </li>
+        <li class="clearfix">
+          <router-link to="/criminal_data">犯人数据导入</router-link>
+        </li>
+        <li class="clearfix">
+          <router-link to="">法律法规数据导入</router-link>
+        </li>
+      </ul>
     </div>
   </div>
 </template>

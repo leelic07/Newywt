@@ -15,6 +15,10 @@ import AddUser from '@/components/System/Add_User'
 import BalanceStatistics from '@/components/Family/Balance_Statistics'
 import RegistrationStatistics from '@/components/Family/Registration_Statistics'
 import LoginStatistics from '@/components/Family/Login_Statistics'
+import OrderManagement from '@/components/Order/Order_Management'
+import CriminalData from '@/components/Data/Criminal_Data'
+import CommodityData from '@/components/Data/Commodity_Data'
+
 
 Vue.use(Router)
 
@@ -83,6 +87,18 @@ export default new Router({
     {
       path:'/login_statistics',
       component:LoginStatistics
+    },
+    {
+      path:'/order_management',
+      component:OrderManagement
+    },
+    {
+      path:'/criminal_data',
+      component:CriminalData
+    },
+    {
+      path:'/commodity_data',
+      component:CommodityData
     },
     {
       path:'*',
