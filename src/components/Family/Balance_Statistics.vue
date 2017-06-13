@@ -32,37 +32,9 @@
               <!-- /.input group -->
             </div>
           </div>
-
-          <div class="col-xs-14 menuType">
-            <!--<div class="form-group col-xs-24">-->
-
-            <!--<div class="col-xs-4">-->
-            <!--<label class="pull-left">菜单类型</label>-->
-            <!--</div>-->
-
-            <!--<div class="col-xs-5">-->
-            <!--<select class="form-control">-->
-            <!--<option>一级菜单</option>-->
-            <!--<option>二级菜单</option>-->
-            <!--<option>三级菜单</option>-->
-            <!--<option>四级菜单</option>-->
-            <!--<option>五级菜单</option>-->
-            <!--</select>-->
-            <!--</div>-->
-
-            <!--</div>-->
-          </div>
-
         </div>
 
         <div class="col-xs-24 searchBox">
-          <!--<div class="input-group input-group-sm col-xs-10">-->
-          <!--<input type="text" class="form-control">-->
-          <!--<span class="input-group-btn">-->
-          <!--<button type="button" class="btn btn-info btn-flat">Go!</button>-->
-          <!--</span>-->
-          <!--</div>-->
-
           <div class="form-group col-xs-10">
             <div class="col-xs-20">
               <input type="text" class="form-control" placeholder="输入监狱名称进行查询">
@@ -211,6 +183,7 @@
 <style type="text/less" lang="less">
   @contentWidth: 77.9%;
   @marginLeft: 20%;
+  @marginTop:70px;
   @white: #fff;
   @btnBlue: #6495ED;
   @btnRed: #E72E4D;
@@ -223,6 +196,7 @@
   /*border:1px solid #000;*/
   /*}*/
   #balanceStatistics {
+    margin-top:@marginTop;
     .balanceStatisticsContent {
       width: @contentWidth;
       margin-left: @marginLeft;

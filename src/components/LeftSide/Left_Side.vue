@@ -1,5 +1,5 @@
 <template>
-  <div id="leftSide" class="">
+  <div id="leftSide" class="pull-left">
     <div class="col-xs-24 title">
       <router-link to="">狱务通信息管理平台</router-link>
     </div>
@@ -65,6 +65,21 @@
         </li>
       </ul>
     </div>
+
+    <div class="col-xs-24 list">
+      <a href="#">退款管理<span class="glyphicon glyphicon-menu-right"></span></a>
+      <ul class="clearfix">
+        <li class="clearfix">
+          <router-link to="/refundment_examination">退款审批</router-link>
+        </li>
+        <!--<li class="clearfix">-->
+          <!--<router-link to="/criminal_data">犯人数据导入</router-link>-->
+        <!--</li>-->
+        <!--<li class="clearfix">-->
+          <!--<router-link to="">法律法规数据导入</router-link>-->
+        <!--</li>-->
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -86,9 +101,10 @@
     position:fixed;
     top:0;
     left:0;
-    /*bottom:0;*/
+    bottom:0;
     width:18%;
-    height:100%;
+    overflow:auto;
+    /*height:100%;*/
     background:@listColor;
     a{
       &:hover{

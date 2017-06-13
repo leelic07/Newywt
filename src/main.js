@@ -3,9 +3,13 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import axios from 'axios'
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
+axios.defaults.baseURL='http://10.10.10.118:8080/ywt/api';
+
+axios.defaults.withCredentials=true;
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

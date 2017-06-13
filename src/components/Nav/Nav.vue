@@ -17,7 +17,7 @@
         </div>
       </div>
       <div class="col-xs-2 logout">
-        <a href="#" class="pull-right">
+        <a href="#" class="pull-right" @click="logOut()">
           退出 <span class="glyphicon glyphicon-log-in"></span>
         </a>
       </div>
@@ -27,11 +27,32 @@
 </template>
 
 <script>
+  import axios from 'axios'
   export default {
     data(){
       return {
 
       }
+    },
+    methods:{
+        logOut(){
+          axios.get('/logout.do').then(res=>{
+            console.log(res.data)
+            if(res.data.code == 0) {
+              this.$router.push('/login')
+            }else if(res.data.code == 1) {
+              console.log(res.data.msg);
+              console.log('失败');
+            }else if(res.data.code == 2) {
+              console.log(res.data.msg);
+              console.log('没有权限');
+            }else {
+              console.log(res.data.msg);
+            }
+          }).catch(err=>{
+              console.log(err);
+          })
+        }
     }
   }
 </script>
@@ -43,8 +64,12 @@
     /*border:1px solid #000;*/
   /*}*/
   #topNav{
+    position:fixed;
+    top:0;
+    z-index:10;
     width:82%;
     margin-left:18%;
+    background:@white;
     /*>div{*/
       /*&:nth-child(2){*/
         /*width:95%;*/

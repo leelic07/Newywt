@@ -37,10 +37,12 @@
 <style type="text/less" lang="less">
   @contentWidth: 77.9%;
   @marginLeft: 20%;
+  @marginTop:90px;
   @white: #fff;
   @textRed:#E72F4B;
   @darkGray:#959595;
   #criminalData{
+    margin-top:@marginTop;
     .criminalDataContent{
       width:@contentWidth;
       margin-left:@marginLeft;

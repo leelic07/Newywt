@@ -10,10 +10,10 @@
 
       <div class="col-xs-24">
         <div class="col-xs-24">
-          <div class="col-xs-3 menuType">
+          <div class="col-xs-4 menuType">
             <div class="form-group col-xs-24">
 
-              <div class="col-xs-7">
+              <div class="col-xs-8">
                 <label class="pull-left">角色</label>
               </div>
 
@@ -61,10 +61,10 @@
           <!--<button type="button" class="btn btn-info btn-flat">Go!</button>-->
           <!--</span>-->
           <!--</div>-->
-          <div class="col-xs-3 menuType">
+          <div class="col-xs-4 menuType">
             <div class="form-group col-xs-24">
 
-              <div class="col-xs-7">
+              <div class="col-xs-8">
                 <label class="pull-left">状态</label>
               </div>
 
@@ -86,7 +86,7 @@
               <input type="text" class="form-control" placeholder="输入用户名称进行查询">
             </div>
             <div class="col-xs-3">
-              <button class="btn btn-block glyphicon glyphicon-search pull-left searchBtn"></button>
+              <button class="btn btn-block glyphicon glyphicon-search pull-left searchBtn" @click="getUsers()"></button>
             </div>
           </div>
         </div>
@@ -114,112 +114,112 @@
             </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
-              <!--<a href="#" class="textBlue">编辑</a>-->
-              <router-link to="/user_management/edit_user" class="textBlue">编辑</router-link>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
+            <tr>
+              <td>
+                <div class="selectBox"></div>
+              </td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>
+                <!--<a href="#" class="textBlue">编辑</a>-->
+                <router-link to="/user_management/edit_user" class="textBlue">编辑</router-link>
+                <a href="#" class="textRed">删除</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="selectBox"></div>
+              </td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>
+                <a href="#" class="textBlue">编辑</a>
+                <a href="#" class="textRed">删除</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="selectBox"></div>
+              </td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>
+                <a href="#" class="textBlue">编辑</a>
+                <a href="#" class="textRed">删除</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="selectBox"></div>
+              </td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>
+                <a href="#" class="textBlue">编辑</a>
+                <a href="#" class="textRed">删除</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="selectBox"></div>
+              </td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>
+                <a href="#" class="textBlue">编辑</a>
+                <a href="#" class="textRed">删除</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="selectBox"></div>
+              </td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>
+                <a href="#" class="textBlue">编辑</a>
+                <a href="#" class="textRed">删除</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="selectBox"></div>
+              </td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>
+                <a href="#" class="textBlue">编辑</a>
+                <a href="#" class="textRed">删除</a>
+              </td>
+            </tr>
           </tbody>
         </table>
 
@@ -235,13 +235,20 @@
 
 <script>
   //  import Page from '@/components/Paginator/Paginator'
-
+  import axios from 'axios'
   export default {
     data() {
       return {
-        isManage:true,
-        toUrl:'',
-        fromUrl:''
+        isManage: true,
+        toUrl: '',
+        fromUrl: '',
+        page: 1,
+        rows: '',
+        loginName: '',
+        roleId: '',
+        status: '',
+        startTime: '',
+        endTime: ''
       }
     },
     watch: {
@@ -266,7 +273,7 @@
       },
       fromUrl() {
         const editUrl = '/user_management/edit_user';
-        if(this.fromUrl == '/user_management/edit_user'){
+        if (this.fromUrl == '/user_management/edit_user') {
 //          this.isManage = false;
         }
 //        else {
@@ -277,11 +284,45 @@
 //    components:{
 //      Page
 //    },
-    methods:{
+    methods: {
       addUser(){
-          this.$router.push({
-            path:'/user_management/add_user'
-          })
+        this.$router.push({
+          path: '/user_management/add_user'
+        })
+      },
+      getUsers(){
+//        axios.get('sysuser/page.do',{
+//          params: {
+//            page: this.page,
+//            loginName: this.loginName,
+//            roleId: this.roleId,
+//            startTime: this.startTime,
+//            endTime: this.endTime
+//          }
+//        }).then(res => {
+//          console.log(res.data);
+//        }).catch(err => {
+//          console.log(err);
+//        })
+
+        $.ajax({
+          type:'get',
+          url:'http://10.10.10.118:8080/ywt/api/sysuser/page.do',
+          params:{
+            page: this.page,
+            loginName: this.loginName,
+            roleId: this.roleId,
+            startTime: this.startTime,
+            endTime: this.endTime
+          },
+          dataType:'jsonp',
+          success:(res)=>{
+            console.log(res);
+          },
+          error:(err)=>{
+            console.log(err);
+          }
+        })
       }
     },
     mounted(){
@@ -294,6 +335,8 @@
       $('#datepicker1').datepicker({
         autoclose: true
       });
+
+      this.getUsers();
     },
     updated(){
       //Date picker
@@ -311,23 +354,25 @@
 <style type="text/less" lang="less">
   @contentWidth: 77.9%;
   @marginLeft: 20%;
+  @marginTop: 70px;
   @white: #fff;
   @btnBlue: #6495ED;
   @btnRed: #E72E4D;
   @gray: #F7F7F7;
-  @lightGray:#F4F4F4;
+  @lightGray: #F4F4F4;
   @textRed: #E9445D;
   @textBlue: #6495ED;
   /**{*/
-    /*border:1px solid #000;*/
+  /*border:1px solid #000;*/
   /*}*/
   #userManagement {
+    margin-top: @marginTop;
     .userManagementContent {
       width: @contentWidth;
       margin-left: @marginLeft;
       margin-top: 20px;
-      .breadcrumb{
-        background:@white;
+      .breadcrumb {
+        background: @white;
       }
       > div {
         &:nth-child(2) {

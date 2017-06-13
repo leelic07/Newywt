@@ -1,15 +1,26 @@
 <template>
-  <div id="loginStatistics" class="row">
-    <div class="loginStatisticsContent clearfix" v-if="isManage">
+  <div id="userManagement" class="row">
+    <div class="userManagementContent clearfix" v-if="isManage">
 
       <ol class="breadcrumb col-xs-24">
         <!--<li><a href="#">Home</a></li>-->
-        <li>家属管理</li>
-        <li class="active">登录统计</li>
+        <li>退款管理</li>
+        <li class="active">退款审批</li>
       </ol>
 
       <div class="col-xs-24">
         <div class="col-xs-24">
+          <div class="col-xs-4 menuType">
+            <div class="form-group col-xs-24">
+
+              <div class="col-xs-20">
+                <select class="form-control">
+                  <option>长沙女子监狱</option>
+                </select>
+              </div>
+
+            </div>
+          </div>
 
           <div class="col-xs-10">
             <div class="form-group col-xs-11">
@@ -36,72 +47,180 @@
         </div>
 
         <div class="col-xs-24 searchBox">
+          <div class="col-xs-4 menuType">
+            <div class="form-group col-xs-24">
+
+              <div class="col-xs-20">
+                <select class="form-control">
+                  <option>第一监区</option>
+                </select>
+              </div>
+
+            </div>
+          </div>
 
           <div class="form-group col-xs-10">
             <div class="col-xs-20">
-              <input type="text" class="form-control" placeholder="输入监狱名称进行查询">
+              <input type="text" class="form-control" placeholder="输入用户名称进行查询">
             </div>
             <div class="col-xs-3">
               <button class="btn btn-block glyphicon glyphicon-search pull-left searchBtn"></button>
             </div>
           </div>
-
         </div>
       </div>
 
+      <div class="col-xs-24 buttonBox">
+        <button class="btn btn-flat pull-left">同意申请</button>
+        <button class="btn btn-flat pull-left">拒绝申请</button>
+      </div>
 
-      <div class="col-xs-24 balanceTable">
-        <table class="table table-responsive table-bordered text-center">
+      <div class="col-xs-24 menuTable">
+        <table class="table table-responsive table-bordered">
           <thead>
-          <tr>
-            <th>序号</th>
-            <th>日期</th>
-            <th>登录人数</th>
-            <th>所属监狱名称</th>
-          </tr>
+            <tr>
+              <th class="col-xs-1">
+                <div class="selectBox active"></div>
+              </th>
+              <th>序号</th>
+              <th>罪犯编号</th>
+              <th>罪犯姓名</th>
+              <th>所属监狱</th>
+              <th>所属监区</th>
+              <th>家属姓名</th>
+              <th>家属关系</th>
+              <th>家属电话</th>
+              <th>申请日期</th>
+              <th colspan="2">操作</th>
+            </tr>
           </thead>
           <tbody>
           <tr>
+            <td>
+              <div class="selectBox"></div>
+            </td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>
+              <!--<a href="#" class="textBlue">编辑</a>-->
+              <router-link to="/user_management/edit_user" class="textBlue">编辑</router-link>
+              <a href="#" class="textRed">删除</a>
+            </td>
           </tr>
           <tr>
+            <td>
+              <div class="selectBox"></div>
+            </td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>
+              <a href="#" class="textBlue">编辑</a>
+              <a href="#" class="textRed">删除</a>
+            </td>
           </tr>
           <tr>
+            <td>
+              <div class="selectBox"></div>
+            </td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>
+              <a href="#" class="textBlue">编辑</a>
+              <a href="#" class="textRed">删除</a>
+            </td>
           </tr>
           <tr>
+            <td>
+              <div class="selectBox"></div>
+            </td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>
+              <a href="#" class="textBlue">编辑</a>
+              <a href="#" class="textRed">删除</a>
+            </td>
           </tr>
           <tr>
+            <td>
+              <div class="selectBox"></div>
+            </td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>
+              <a href="#" class="textBlue">编辑</a>
+              <a href="#" class="textRed">删除</a>
+            </td>
           </tr>
           <tr>
+            <td>
+              <div class="selectBox"></div>
+            </td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>
+              <a href="#" class="textBlue">编辑</a>
+              <a href="#" class="textRed">删除</a>
+            </td>
           </tr>
           <tr>
+            <td>
+              <div class="selectBox"></div>
+            </td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>
+              <a href="#" class="textBlue">编辑</a>
+              <a href="#" class="textRed">删除</a>
+            </td>
           </tr>
           </tbody>
         </table>
@@ -117,6 +236,8 @@
 </template>
 
 <script>
+  //  import Page from '@/components/Paginator/Paginator'
+
   export default {
     data() {
       return {
@@ -131,7 +252,7 @@
         this.fromUrl = from.path;
       },
       toUrl() {
-        const editUrl = '/role_management/set_authority';
+        const editUrl = '/user_management/edit_user';
 //        const index = editUrl.lastIndexOf('/');
 //        if (this.toUrl.substring(0, index) == "/crimsearch/edit") {//进入编辑页面
 //          this.isManage = false;//将管理页隐藏
@@ -139,27 +260,30 @@
 //          this.isManage = true;
 //        }
 
-        if (this.toUrl == '/role_management/set_authority' || this.toUrl == '/role_management/add_role') {
+        if (this.toUrl == '/user_management/edit_user' || this.toUrl == '/user_management/add_user') {
           this.isManage = false;
         } else {
           this.isManage = true;
         }
       },
       fromUrl() {
-        const editUrl = '/role_management/set_authority';
-        if(this.fromUrl == '/role_management/set_authority'){
-
+        const editUrl = '/user_management/edit_user';
+        if(this.fromUrl == '/user_management/edit_user'){
+//          this.isManage = false;
         }
+//        else {
+//          this.isManage = true;
+//        }
       }
     },
+//    components:{
+//      Page
+//    },
     methods:{
-      addRole(){
-        this.$router.push({
-          path:'/role_management/add_role'
-        })
-      }
+
     },
     mounted(){
+//
       //Date picker
       $('#datepicker').datepicker({
         autoclose: true
@@ -193,13 +317,12 @@
   @lightGray:#F4F4F4;
   @textRed: #E9445D;
   @textBlue: #6495ED;
-  @textOrange:#DB823D;
   /**{*/
   /*border:1px solid #000;*/
   /*}*/
-  #loginStatistics {
+  #userManagement {
     margin-top:@marginTop;
-    .loginStatisticsContent {
+    .userManagementContent {
       width: @contentWidth;
       margin-left: @marginLeft;
       margin-top: 20px;
@@ -260,14 +383,14 @@
           }
           &:nth-child(2) {
             background: @btnRed;
+            margin-left:5%;
           }
         }
       }
 
-      .balanceTable {
+      .menuTable {
         position: relative;
         margin-bottom: 75px;
-        margin-top:30px;
         .table {
           margin-bottom: 0;
           color: #929292;
@@ -282,9 +405,6 @@
           .textRed {
             color: @textRed;
           }
-          .textOrange {
-            color: @textOrange;
-          }
           thead {
             tr {
               background: @gray;
@@ -294,17 +414,9 @@
           tbody {
             tr {
               td {
-                &:last-child{
-                  a {
-                    /*&:nth-child(2) {*/
-                    /*margin-left: 20%;*/
-                    /*}*/
-                    &:first-child{
-                      margin-right:20%;
-                    }
-                    &:nth-child(3){
-                      margin-left:20%;
-                    }
+                a {
+                  &:nth-child(2) {
+                    margin-left: 20%;
                   }
                 }
               }

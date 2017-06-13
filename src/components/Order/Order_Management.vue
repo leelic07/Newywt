@@ -35,7 +35,7 @@
           <div class="col-xs-14 menuType">
             <div class="form-group col-xs-24">
 
-              <div class="col-xs-4">
+              <div class="col-xs-6">
                 <label class="pull-left">支付结果状态</label>
               </div>
 
@@ -222,6 +222,7 @@
 <style type="text/less" lang="less">
   @contentWidth: 77.9%;
   @marginLeft: 20%;
+  @marginTop: 90px;
   @white: #fff;
   @btnBlue: #6495ED;
   @btnRed: #E72E4D;
@@ -233,10 +234,10 @@
   /*border:1px solid #000;*/
   /*}*/
   #orderManagement {
+    margin-top:@marginTop;
     .orderManagementContent {
       width: @contentWidth;
       margin-left: @marginLeft;
-      margin-top: 20px;
       .breadcrumb{
         background:@white;
       }

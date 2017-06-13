@@ -18,6 +18,7 @@ import LoginStatistics from '@/components/Family/Login_Statistics'
 import OrderManagement from '@/components/Order/Order_Management'
 import CriminalData from '@/components/Data/Criminal_Data'
 import CommodityData from '@/components/Data/Commodity_Data'
+import RefundmentExamination from '@/components/Refundment/Refundment_Examination'
 
 
 Vue.use(Router)
@@ -99,6 +100,10 @@ export default new Router({
     {
       path:'/commodity_data',
       component:CommodityData
+    },
+    {
+      path:'/refundment_examination',
+      component:RefundmentExamination
     },
     {
       path:'*',

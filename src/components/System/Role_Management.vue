@@ -266,6 +266,7 @@
 <style type="text/less" lang="less">
   @contentWidth: 77.9%;
   @marginLeft: 20%;
+  @marginTop: 70px;
   @white: #fff;
   @btnBlue: #6495ED;
   @btnRed: #E72E4D;
@@ -278,6 +279,7 @@
   /*border:1px solid #000;*/
   /*}*/
   #roleManagement {
+    margin-top:@marginTop;
     .roleManagementContent {
       width: @contentWidth;
       margin-left: @marginLeft;

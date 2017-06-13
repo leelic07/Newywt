@@ -20,17 +20,17 @@
           <!--</div>-->
           <div class="form-group col-xs-20 col-xs-offset-2">
             <!--<label for="exampleInputEmail1">Email address</label>-->
-            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="请输入用户名">
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="请输入用户名" v-model="loginName">
           </div>
           <!--<div class="input col-xs-24">-->
             <!--<input type="text" placeholder="请输入密码">-->
           <!--</div>-->
           <div class="form-group col-xs-20 col-xs-offset-2">
             <!--<label for="exampleInputPassword1">Password</label>-->
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入密码">
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入密码" v-model="loginPwd">
           </div>
           <div class="login-btn col-xs-20 col-xs-offset-2">
-            <button type="button" class="btn btn-block btn-login">登录</button>
+            <button type="button" class="btn btn-block btn-login" @click="login()">登录</button>
             <!--<button type="button" class="btn btn-block btn-warning btn-lg">登录</button>-->
           </div>
         </div>
@@ -46,12 +46,39 @@
 </template>
 
 <script>
+  import axios from 'axios'
   export default {
-      data() {
-          return {
-
-          }
+    data() {
+      return {
+        loginName:'',
+        loginPwd:''
       }
+    },
+    methods:{
+      login(){
+        axios.get('/login.do',{
+          params:{
+            'loginName':this.loginName,
+            'loginPwd':this.loginPwd
+          }
+        }).then(res=>{
+//          console.log(res.data);
+          if(res.data.code == 0) {
+            this.$router.push('/menu_management')
+          }else if(res.data.code == 1) {
+            console.log(res.data.msg);
+            console.log('失败');
+          }else if(res.data.code == 2) {
+            console.log(res.data.msg);
+            console.log('没有权限');
+          }else {
+              console.log(res.data.msg);
+          }
+        }).catch(err=>{
+          console.log(err);
+        })
+      }
+    }
   }
 </script>
 
@@ -64,7 +91,7 @@
   #login{
     .logo{
       /*padding:18px 0 18px 0;*/
-      margin-top:5%;
+      margin-top:2%;
       >div{
         &:first-child{
           padding-right:1%;
