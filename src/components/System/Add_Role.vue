@@ -16,7 +16,7 @@
         <div class="form-group col-xs-24">
           <label for="inputRoleName" class="col-xs-4 control-label">角色名称</label>
           <div class="col-sm-15">
-            <input type="text" class="form-control" id="inputRoleName" placeholder="">
+            <input type="text" class="form-control" id="inputRoleName" placeholder="" v-model="roleName">
           </div>
         </div>
 
@@ -24,17 +24,17 @@
           <label for="inputRoleDescription" class="col-xs-4 control-label">角色描述</label>
           <div class="col-sm-15">
             <!--<input type="text" class="form-control" id="inputEmail1" placeholder="">-->
-            <textarea name="" class="form-control" id="inputRoleDescription" cols="30" rows="10"></textarea>
+            <textarea name="" class="form-control" id="inputRoleDescription" cols="30" rows="10" v-model="description"></textarea>
           </div>
         </div>
       </div>
 
       <div class="col-xs-24 buttonBox">
         <div class="col-xs-12">
-          <button class="pull-right">保存</button>
+          <button class="pull-right" @click="saveRole()">保存</button>
         </div>
         <div class="col-xs-12s">
-          <button class="pull-left">返回</button>
+          <button class="pull-left" @click="back()">返回</button>
         </div>
       </div>
 
@@ -45,12 +45,41 @@
 </template>
 
 <script>
+  import axios from 'axios'
   export default {
-      data(){
-          return {
-
-          }
+    data(){
+      return {
+        page:1,
+        rows:'',
+        roleName:'',
+        description:''
       }
+    },
+    methods:{
+      saveRole(){
+        axios.get('sysrole/save.do',{
+          params:{
+            page:this.page,
+            roleName:this.roleName,
+            description:this.description
+          }
+        }).then(res=>{
+          if(res.data.code == 0){
+            this.roleList = res.data.data;
+          }
+        }).catch(err=>{
+          console.log(err);
+        })
+      },
+      back(){
+        this.$router.push({
+          path:'/role_management'
+        })
+      }
+    },
+    mounted(){
+
+    }
   }
 </script>
 

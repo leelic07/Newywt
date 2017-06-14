@@ -17,7 +17,7 @@
         <div class="form-group col-xs-24">
           <label for="inputLoginName" class="col-xs-4 control-label">登录账号</label>
           <div class="col-sm-15">
-            <input type="text" class="form-control" id="inputLoginName" placeholder="">
+            <input type="text" class="form-control" id="inputLoginName" placeholder="" v-model="loginName">
           </div>
         </div>
 
@@ -40,29 +40,44 @@
         <div class="form-group col-xs-24">
           <label for="inputEmail2" class="col-xs-4 control-label">登录密码</label>
           <div class="col-sm-15">
-            <input type="password" class="form-control" id="inputEmail2" placeholder="">
+            <input type="password" class="form-control" id="inputEmail2" placeholder="" v-model="loginPwd">
           </div>
         </div>
 
         <div class="form-group col-xs-24">
           <label for="inputUserName" class="col-xs-4 control-label">用户名称</label>
           <div class="col-sm-15">
-            <input type="text" class="form-control" id="inputUserName" placeholder="">
+            <input type="text" class="form-control" id="inputUserName" placeholder="" v-model="realName">
           </div>
         </div>
 
         <div class="form-group col-xs-24">
           <label for="inputEmail" class="col-xs-4 control-label">用户邮箱</label>
           <div class="col-sm-15">
-            <input type="email" class="form-control" id="inputEmail" placeholder="">
+            <input type="email" class="form-control" id="inputEmail" placeholder="" v-model="email">
           </div>
         </div>
 
         <div class="form-group col-xs-24">
           <label class="col-xs-4 control-label">用户角色</label>
           <div class="col-xs-6">
-            <select class="form-control">
-              <option>全部</option>
+            <select class="form-control" v-model="roleId">
+              <option value="">全部</option>
+              <option v-for="rl in roleList" :value="rl.id" v-text="rl.roleName"></option>
+              <!--<option>二级菜单</option>-->
+              <!--<option>三级菜单</option>-->
+              <!--<option>四级菜单</option>-->
+              <!--<option>五级菜单</option>-->
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group col-xs-24">
+          <label class="col-xs-4 control-label">监狱</label>
+          <div class="col-xs-6">
+            <select class="form-control" v-model="jailId">
+              <option value="">全部</option>
+              <option></option>
               <!--<option>二级菜单</option>-->
               <!--<option>三级菜单</option>-->
               <!--<option>四级菜单</option>-->
@@ -75,10 +90,10 @@
 
       <div class="col-xs-24 buttonBox">
         <div class="col-xs-12">
-          <button class="pull-right">保存</button>
+          <button class="pull-right" @click="saveUser()">保存</button>
         </div>
         <div class="col-xs-12s">
-          <button class="pull-left">返回</button>
+          <button class="pull-left" @click="back()">返回</button>
         </div>
       </div>
 
@@ -90,14 +105,60 @@
 </template>
 
 <script>
+  import axios from 'axios'
   export default {
     data() {
       return {
-
+        id:'',//用户id
+        realName:'',//用户姓名
+        loginName:'',//登录用户,
+        loginPwd:'',
+        email:'',
+        jailId:'',
+        roleId:'',
+        roleList:[]
+      }
+    },
+    methods:{
+      getRoles(){
+        axios.get('sysrole/list.do').then(res => {
+//          console.log(res.data);
+          if(res.data.code == 0){
+            this.roleList = res.data.data;
+          }
+        }).catch(err => {
+          console.log(err);
+        })
+      },
+      saveUser(){
+        axios.post('sysuser/save.do',{
+          params:{
+            realName:this.realName,
+            loginName:this.loginName,
+            loginPwd:this.loginPwd,
+            email:this.email,
+            roleId:this.roleId,
+            jailId:this.jailId
+          }
+        }).then(res => {
+//          console.log(res.data);
+          if(res.data.code == 0){
+            this.roleList = res.data.data;
+          }
+        }).catch(err => {
+          console.log(err);
+        })
+      },
+      back(){
+//        window.history.go(-1);
+        this.$router.push({
+          path:'/user_management'
+        })
       }
     },
     mounted(){
 //      window.location.href="www.baidu.com";
+      this.getRoles();
     }
   }
 </script>

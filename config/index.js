@@ -7,7 +7,7 @@ module.exports = {
     index: path.resolve(__dirname, '../dist/index.html'),
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './',
     productionSourceMap: true,
     // Gzip off by default as many popular static hosts such as
     // Surge or Netlify already gzip all static assets for you.
@@ -23,21 +23,27 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
-    port: 8080,
+    port: 8081,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      // '/ywt/api': {
+      //   target: 'http://10.10.10.118:8080',
+      //   changeOrigin: true
+      // }
+    },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
     // (https://github.com/webpack/css-loader#sourcemaps)
     // In our experience, they generally work as expected,
     // just be aware of this issue when enabling this option.
-    cssSourceMap: false,
-    proxy: {
-      '/ywt/api': {
-        target: 'http://10.10.10.118:8080',
-        changeOrigin: true
-      }
+    cssSourceMap: false
+    //   proxy: {
+    //     '/ywt/api': {
+    //       target: 'http://10.10.10.118:8080',
+    //       changeOrigin: true
+    //     }
+    // }
   }
 }

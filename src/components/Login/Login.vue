@@ -30,7 +30,7 @@
             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入密码" v-model="loginPwd">
           </div>
           <div class="login-btn col-xs-20 col-xs-offset-2">
-            <button type="button" class="btn btn-block btn-login" @click="login()">登录</button>
+             <button type="button" class="btn btn-block btn-login" @click="login()">登录</button>
             <!--<button type="button" class="btn btn-block btn-warning btn-lg">登录</button>-->
           </div>
         </div>
@@ -43,6 +43,7 @@
       </div>
     </div>
   </div>
+
 </template>
 
 <script>

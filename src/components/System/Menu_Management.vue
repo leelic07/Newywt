@@ -40,12 +40,12 @@
               </div>
 
               <div class="col-xs-5">
-                <select class="form-control">
-                  <option>一级菜单</option>
-                  <option>二级菜单</option>
-                  <option>三级菜单</option>
-                  <option>四级菜单</option>
-                  <option>五级菜单</option>
+                <select class="form-control" v-model="menuType">
+                  <option v-for="mtl in menuTypeList" :value="mtl.id" v-text="mtl.menuName"></option>
+                  <!--<option>二级菜单</option>-->
+                  <!--<option>三级菜单</option>-->
+                  <!--<option>四级菜单</option>-->
+                  <!--<option>五级菜单</option>-->
                 </select>
               </div>
 
@@ -64,12 +64,13 @@
 
           <div class="form-group col-xs-10">
             <div class="col-xs-20">
-              <input type="text" class="form-control" placeholder="输入菜单名称进行查询">
+              <input type="text" class="form-control" placeholder="输入菜单名称进行查询" v-model="menuName">
             </div>
             <div class="col-xs-3">
-              <button class="btn btn-block glyphicon glyphicon-search pull-left searchBtn"></button>
+              <button class="btn btn-block glyphicon glyphicon-search pull-left searchBtn" @click="getMenus()"></button>
             </div>
           </div>
+
         </div>
       </div>
 
@@ -94,99 +95,15 @@
           </tr>
           </thead>
           <tbody>
-          <tr>
+          <tr v-for="ml,index in menuList">
             <td>
-              <div class="selectBox"></div>
+              <div class="selectBox" :id="ml.id"></div>
             </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
+            <td v-text="index"></td>
+            <td v-text="ml.menuName"></td>
+            <td v-text="ml.menuType"></td>
+            <td>{{pid}}</td>
+            <td v-text="ml.menuPath"></td>
             <td>
               <a href="#" class="textBlue">编辑</a>
               <a href="#" class="textRed">删除</a>
@@ -207,13 +124,21 @@
 
 <script>
   //  import Page from '@/components/Paginator/Paginator'
-
+  import axios from 'axios'
   export default {
     data() {
       return {
         isManage:true,
         toUrl:'',
-        fromUrl:''
+        fromUrl:'',
+        page: 1,//默认第几页
+        rows: '',//每页显示几行
+        menuName: '',//菜单名
+        menuType:'',//菜单类型
+//        startTime: '',//开始日期
+//        endTime: '',//结束日期
+        menuList:[],//菜单列表
+        menuTypeList:[]//菜单类型列表
       }
     },
 //    components:{
@@ -226,13 +151,6 @@
       },
       toUrl() {
         const editUrl = '/menu_management/add_menu';
-//        const index = editUrl.lastIndexOf('/');
-//        if (this.toUrl.substring(0, index) == "/crimsearch/edit") {//进入编辑页面
-//          this.isManage = false;//将管理页隐藏
-//        } else {
-//          this.isManage = true;
-//        }
-
         if (this.toUrl == '/menu_management/add_menu') {
           this.isManage = false;
         } else {
@@ -251,10 +169,38 @@
           this.$router.push({
             path:'/menu_management/add_menu'
           })
+      },
+      getMenus(){
+        axios.get('sysmenu/page.do',{
+          params:{
+            page:this.page,
+            menuName:this.roleName,
+            menuType:this.menuTyep,
+            startTime:this.dateFormat($('#datepicker').val()),
+            endTime:this.dateFormat($('#datepicker1').val())
+          }
+        }).then(res=>{
+          if(res.data.code == 0){
+            this.menuList = res.data.data;
+          }
+        }).catch(err=>{
+          console.log(err);
+        })
+      },
+      getMenuType(){
+        axios.get('sysmenu/list.do').then(res=>{
+          if(res.data.code == 0){
+            this.menuTypeList = res.data.data;
+            this.menuType = this.menuTypeList[0].id;
+          }
+        }).catch(err=>{
+          console.log(err);
+        })
       }
+
     },
     mounted(){
-//
+
       //Date picker
       $('#datepicker').datepicker({
         autoclose: true
@@ -263,6 +209,9 @@
       $('#datepicker1').datepicker({
         autoclose: true
       });
+
+      this.getMenus();
+      this.getMenuType();
     },
     updated(){
       //Date picker

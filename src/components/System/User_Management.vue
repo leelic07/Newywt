@@ -18,8 +18,9 @@
               </div>
 
               <div class="col-xs-14">
-                <select class="form-control">
-                  <option>全部</option>
+                <select class="form-control" v-model="roleId">
+                  <option value="">全部</option>
+                  <option v-for="rl in roleList" :value="rl.id" v-text="rl.roleName"></option>
                   <!--<option>二级菜单</option>-->
                   <!--<option>三级菜单</option>-->
                   <!--<option>四级菜单</option>-->
@@ -61,34 +62,35 @@
           <!--<button type="button" class="btn btn-info btn-flat">Go!</button>-->
           <!--</span>-->
           <!--</div>-->
-          <div class="col-xs-4 menuType">
-            <div class="form-group col-xs-24">
+          <!--<div class="col-xs-4 menuType">-->
+            <!--<div class="form-group col-xs-24">-->
 
-              <div class="col-xs-8">
-                <label class="pull-left">状态</label>
-              </div>
+              <!--<div class="col-xs-8">-->
+                <!--<label class="pull-left">状态</label>-->
+              <!--</div>-->
 
-              <div class="col-xs-14">
-                <select class="form-control">
-                  <option>全部</option>
-                  <!--<option>二级菜单</option>-->
-                  <!--<option>三级菜单</option>-->
-                  <!--<option>四级菜单</option>-->
-                  <!--<option>五级菜单</option>-->
-                </select>
-              </div>
+              <!--<div class="col-xs-14">-->
+                <!--<select class="form-control" v-model="status">-->
+                  <!--<option value="0">全部</option>-->
+                  <!--&lt;!&ndash;<option>二级菜单</option>&ndash;&gt;-->
+                  <!--&lt;!&ndash;<option>三级菜单</option>&ndash;&gt;-->
+                  <!--&lt;!&ndash;<option>四级菜单</option>&ndash;&gt;-->
+                  <!--&lt;!&ndash;<option>五级菜单</option>&ndash;&gt;-->
+                <!--</select>-->
+              <!--</div>-->
 
-            </div>
-          </div>
+            <!--</div>-->
+          <!--</div>-->
 
-          <div class="form-group col-xs-10 col-xs-offset-1">
+          <div class="form-group col-xs-10">
             <div class="col-xs-20">
-              <input type="text" class="form-control" placeholder="输入用户名称进行查询">
+              <input type="text" class="form-control" placeholder="输入用户名称进行查询" v-model="loginName">
             </div>
             <div class="col-xs-3">
               <button class="btn btn-block glyphicon glyphicon-search pull-left searchBtn" @click="getUsers()"></button>
             </div>
           </div>
+
         </div>
       </div>
 
@@ -109,114 +111,24 @@
               <th>姓名</th>
               <th>邮箱</th>
               <th>用户角色</th>
-              <th>用户状态</th>
+              <!--<th>用户状态</th>-->
               <th colspan="2">操作</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr v-for="ul,index in userList">
               <td>
-                <div class="selectBox"></div>
+                <div class="selectBox" :id="ul.id"></div>
               </td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
+              <td v-text="index">2</td>
+              <td v-text="ul.loginName">2</td>
+              <td v-text="ul.realName">2</td>
+              <td v-text="ul.email">2</td>
+              <td>{{ul.roleId | role}}</td>
+              <!--<td>{{ul.status}}</td>-->
               <td>
                 <!--<a href="#" class="textBlue">编辑</a>-->
                 <router-link to="/user_management/edit_user" class="textBlue">编辑</router-link>
-                <a href="#" class="textRed">删除</a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="selectBox"></div>
-              </td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>
-                <a href="#" class="textBlue">编辑</a>
-                <a href="#" class="textRed">删除</a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="selectBox"></div>
-              </td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>
-                <a href="#" class="textBlue">编辑</a>
-                <a href="#" class="textRed">删除</a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="selectBox"></div>
-              </td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>
-                <a href="#" class="textBlue">编辑</a>
-                <a href="#" class="textRed">删除</a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="selectBox"></div>
-              </td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>
-                <a href="#" class="textBlue">编辑</a>
-                <a href="#" class="textRed">删除</a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="selectBox"></div>
-              </td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>
-                <a href="#" class="textBlue">编辑</a>
-                <a href="#" class="textRed">删除</a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="selectBox"></div>
-              </td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>
-                <a href="#" class="textBlue">编辑</a>
                 <a href="#" class="textRed">删除</a>
               </td>
             </tr>
@@ -227,6 +139,7 @@
         <div class="tableFooter col-xs-24">
 
         </div>
+
       </div>
     </div>
     <router-view></router-view>
@@ -242,13 +155,15 @@
         isManage: true,
         toUrl: '',
         fromUrl: '',
-        page: 1,
-        rows: '',
-        loginName: '',
-        roleId: '',
-        status: '',
-        startTime: '',
-        endTime: ''
+        page: 1,//默认第几页
+        rows: '',//每页显示几行
+        loginName: '',//登录名
+        roleId: '',//角色ID
+        status: '',//状态
+//        startTime: '',//开始日期
+//        endTime: '',//结束日期
+        roleList:[],//角色列表
+        userList:[]//用户列表
       }
     },
     watch: {
@@ -291,42 +206,56 @@
         })
       },
       getUsers(){
-//        axios.get('sysuser/page.do',{
-//          params: {
+//        console.log(this.startTime,this.endTime)
+        axios.get('sysuser/page.do',{
+          params: {
+            page: this.page,
+            loginName: this.loginName,
+            roleId: this.roleId,
+            startTime: this.dateFormat($('#datepicker').val()),
+            endTime: this.dateFormat($('#datepicker1').val())
+          }
+        }).then(res => {
+//          console.log(res.data);
+          if(res.data.code == 0){
+            this.userList = res.data.data;
+          }
+        }).catch(err => {
+          console.log(err);
+        })
+
+//        $.ajax({
+//          type:'post',
+//          url:'http://10.10.10.118:8080/ywt/api/sysuser/page.do',
+//          params:{
 //            page: this.page,
 //            loginName: this.loginName,
 //            roleId: this.roleId,
 //            startTime: this.startTime,
 //            endTime: this.endTime
+//          },
+////          dataType:'jsonp',
+//          contentType: 'application/json',
+//          success:(res)=>{
+//            console.log(res);
+//          },
+//          error:(err)=>{
+//            console.log(err);
 //          }
-//        }).then(res => {
-//          console.log(res.data);
-//        }).catch(err => {
-//          console.log(err);
 //        })
-
-        $.ajax({
-          type:'get',
-          url:'http://10.10.10.118:8080/ywt/api/sysuser/page.do',
-          params:{
-            page: this.page,
-            loginName: this.loginName,
-            roleId: this.roleId,
-            startTime: this.startTime,
-            endTime: this.endTime
-          },
-          dataType:'jsonp',
-          success:(res)=>{
-            console.log(res);
-          },
-          error:(err)=>{
-            console.log(err);
+      },
+      getRoles(){
+        axios.get('sysrole/list.do').then(res => {
+//          console.log(res.data);
+          if(res.data.code == 0){
+            this.roleList = res.data.data;
           }
+        }).catch(err => {
+          console.log(err);
         })
       }
     },
     mounted(){
-//
       //Date picker
       $('#datepicker').datepicker({
         autoclose: true
@@ -337,6 +266,7 @@
       });
 
       this.getUsers();
+      this.getRoles();
     },
     updated(){
       //Date picker

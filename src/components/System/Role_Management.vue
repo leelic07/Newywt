@@ -33,43 +33,22 @@
           </div>
 
           <div class="col-xs-14 menuType">
-            <!--<div class="form-group col-xs-24">-->
 
-              <!--<div class="col-xs-4">-->
-                <!--<label class="pull-left">菜单类型</label>-->
-              <!--</div>-->
-
-              <!--<div class="col-xs-5">-->
-                <!--<select class="form-control">-->
-                  <!--<option>一级菜单</option>-->
-                  <!--<option>二级菜单</option>-->
-                  <!--<option>三级菜单</option>-->
-                  <!--<option>四级菜单</option>-->
-                  <!--<option>五级菜单</option>-->
-                <!--</select>-->
-              <!--</div>-->
-
-            <!--</div>-->
           </div>
 
         </div>
 
         <div class="col-xs-24 searchBox">
-          <!--<div class="input-group input-group-sm col-xs-10">-->
-          <!--<input type="text" class="form-control">-->
-          <!--<span class="input-group-btn">-->
-          <!--<button type="button" class="btn btn-info btn-flat">Go!</button>-->
-          <!--</span>-->
-          <!--</div>-->
 
           <div class="form-group col-xs-10">
             <div class="col-xs-20">
               <input type="text" class="form-control" placeholder="输入角色名称进行查询">
             </div>
             <div class="col-xs-3">
-              <button class="btn btn-block glyphicon glyphicon-search pull-left searchBtn"></button>
+              <button class="btn btn-block glyphicon glyphicon-search pull-left searchBtn" @click="getRoles()"></button>
             </div>
           </div>
+
         </div>
       </div>
 
@@ -92,95 +71,17 @@
           </tr>
           </thead>
           <tbody>
-          <tr>
+          <tr v-for="rl,index in roleList">
             <td>
-              <div class="selectBox"></div>
+              <div class="selectBox" :id="rl.id"></div>
             </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
+            <td v-text="index"></td>
+            <td v-text="rl.roleName"></td>
+            <td v-text="rl.description"></td>
             <td class="text-center col-xs-6">
               <a href="#" class="textBlue">编辑</a>
               <!--<a href="#" class="textOrange">设置权限</a>-->
               <router-link to="/role_management/set_authority" class="textOrange">设置权限</router-link>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td class="text-center">
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textOrange">设置权限</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td class="text-center">
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textOrange">设置权限</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td class="text-center">
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textOrange">设置权限</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td class="text-center">
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textOrange">设置权限</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td class="text-center">
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textOrange">设置权限</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td class="text-center">
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textOrange">设置权限</a>
               <a href="#" class="textRed">删除</a>
             </td>
           </tr>
@@ -198,12 +99,20 @@
 </template>
 
 <script>
+  import axios from 'axios'
   export default {
     data() {
       return {
         isManage:true,
         toUrl:'',
-        fromUrl:''
+        fromUrl:'',
+        page: 1,//默认第几页
+        rows: '',//每页显示几行
+        roleName: '',//角色名
+        roleId: '',//角色ID
+//        startTime: '',//开始日期
+//        endTime: '',//结束日期
+        roleList:[],//角色列表
       }
     },
     watch: {
@@ -235,9 +144,25 @@
     },
     methods:{
       addRole(){
-          this.$router.push({
-            path:'/role_management/add_role'
-          })
+        this.$router.push({
+          path:'/role_management/add_role'
+        })
+      },
+      getRoles(){
+        axios.get('sysrole/page.do',{
+          params:{
+            page:this.page,
+            roleName:this.roleName,
+            startTime:this.dateFormat($('#datepicker').val()),
+            endTime:this.dateFormat($('#datepicker1').val())
+          }
+        }).then(res=>{
+          if(res.data.code == 0){
+            this.roleList = res.data.data;
+          }
+        }).catch(err=>{
+            console.log(err);
+        })
       }
     },
     mounted(){
@@ -249,6 +174,8 @@
       $('#datepicker1').datepicker({
         autoclose: true
       });
+
+      this.getRoles();
     },
     updated(){
       //Date picker
