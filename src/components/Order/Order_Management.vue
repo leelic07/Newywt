@@ -40,12 +40,10 @@
               </div>
 
               <div class="col-xs-5">
-                <select class="form-control">
-                  <option>支付成功</option>
-                  <!--<option>二级菜单</option>-->
-                  <!--<option>三级菜单</option>-->
-                  <!--<option>四级菜单</option>-->
-                  <!--<option>五级菜单</option>-->
+                <select class="form-control" v-model="status">
+                  <option value="">请选择</option>
+                  <option value="0">支付成功</option>
+                  <option value="1">支付失败</option>
                 </select>
               </div>
 
@@ -55,21 +53,30 @@
         </div>
 
         <div class="col-xs-24 searchBox">
-          <!--<div class="input-group input-group-sm col-xs-10">-->
-          <!--<input type="text" class="form-control">-->
-          <!--<span class="input-group-btn">-->
-          <!--<button type="button" class="btn btn-info btn-flat">Go!</button>-->
-          <!--</span>-->
-          <!--</div>-->
-
           <div class="form-group col-xs-10">
             <div class="col-xs-20">
               <input type="text" class="form-control" placeholder="输入监狱名称进行查询">
             </div>
             <div class="col-xs-3">
-              <button class="btn btn-block glyphicon glyphicon-search pull-left searchBtn"></button>
+              <button class="btn btn-block glyphicon glyphicon-search pull-left searchBtn" @click="getOrders()"></button>
             </div>
           </div>
+
+          <div class="col-xs-14 menuType">
+            <div class="form-group col-xs-24">
+
+              <div class="col-xs-6">
+                <label class="pull-left">监狱名称</label>
+              </div>
+
+              <div class="col-xs-5">
+                <select class="form-control" v-model="jailId">
+                  <option v-for="jl in jailList"></option>
+                </select>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -85,55 +92,13 @@
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-          </tr>
+            <tr v-for="ol,index in orderList">
+              <td v-text="index"></td>
+              <td>{{ol.createdAt}}</td>
+              <td v-text="ol.number"></td>
+              <td>{{ol.status}}</td>
+              <td v-text="ol.jailId"></td>
+            </tr>
           </tbody>
         </table>
 
@@ -155,7 +120,14 @@
       return {
         isManage:true,
         toUrl:'',
-        fromUrl:''
+        fromUrl:'',
+        page:'', //第几页
+        rows:'',//每页多少条
+        jailId:'',//监狱ID
+        status:'',//状态
+        startTime:'',//结束时间
+        endTime:'',//开始时间
+        orderList:[]//订单列表
       }
     },
 //    components:{
@@ -193,7 +165,27 @@
         this.$router.push({
           path:'/menu_management/add_menu'
         })
-      }
+      },
+      //获取订单列表
+      getOrders(){
+        axios.get('report/orderPage.do',{
+          params:{
+            page:this.page,
+            rows:this.rows,
+            jailId:this.jailId,
+            status:this.status,
+            startTime:this.dateFormat($('#datepicker').val()),
+            endTime:this.dateFormat($('#datepicker1').val())
+          }
+        }).then(res => {
+          if (res.data.code == 0) {
+            this.orderList = res.data.data;
+          }
+        }).catch(err => {
+          console.log(err);
+        })
+      },
+
     },
     mounted(){
 //
@@ -205,6 +197,8 @@
       $('#datepicker1').datepicker({
         autoclose: true
       });
+
+      this.getOrders();
     },
     updated(){
       //Date picker

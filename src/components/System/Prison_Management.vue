@@ -64,10 +64,10 @@
 
           <div class="form-group col-xs-10">
             <div class="col-xs-20">
-              <input type="text" class="form-control" placeholder="输入监狱名称进行查询">
+              <input type="text" class="form-control" placeholder="输入监狱名称进行查询" v-model="title">
             </div>
             <div class="col-xs-3">
-              <button class="btn btn-block glyphicon glyphicon-search pull-left searchBtn"></button>
+              <button class="btn btn-block glyphicon glyphicon-search pull-left searchBtn" @click="getJails()"></button>
             </div>
           </div>
         </div>
@@ -116,114 +116,7 @@
               <a href="#" class="textRed">删除</a>
             </td>
           </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
+
           </tbody>
         </table>
 
@@ -238,12 +131,17 @@
 </template>
 
 <script>
+  import axios from 'axios'
   export default {
     data(){
       return {
         isManage:true,
         toUrl:'',
-        fromUrl:''
+        fromUrl:'',
+        pageSize:1,//第几页
+        indexPage:'',//每页条数
+        title:''//监狱名称
+
       }
     },
     watch:{
@@ -281,6 +179,20 @@
           this.$router.push({
             path:'/prison_management/add_prison'
           })
+      },
+      getJails(){
+        axios.get('/jail/getJails.do',{
+          title:this.title,
+          indexPage:this.indexPage,
+          pageSize:this.pageSize
+        }).then(res=>{
+          if(res.data.code == 0) {
+            console.log(res.data);
+            this.jailList = res.data.data;
+          }
+        }).catch(err=>{
+          console.log(err);
+        })
       }
     },
     mounted(){
@@ -292,6 +204,8 @@
       $('#datepicker1').datepicker({
         autoclose: true
       });
+
+      this.getJails();
     },
     updated(){
       //Date picker

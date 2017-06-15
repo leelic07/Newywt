@@ -16,7 +16,7 @@
         <div class="form-group col-xs-24">
           <label for="inputEmail0" class="col-xs-4 control-label">监狱名称</label>
           <div class="col-sm-15">
-            <input type="text" class="form-control" id="inputEmail0" placeholder="">
+            <input type="text" class="form-control" id="inputEmail0" placeholder="" v-model="prisonName">
           </div>
         </div>
 
@@ -24,10 +24,10 @@
 
       <div class="col-xs-24 buttonBox">
         <div class="col-xs-12">
-          <button class="pull-right">保存</button>
+          <button class="pull-right" @click="addJail()">保存</button>
         </div>
         <div class="col-xs-12s">
-          <button class="pull-left">返回</button>
+          <button class="pull-left" @click="back()">返回</button>
         </div>
       </div>
 
@@ -39,10 +39,32 @@
 </template>
 
 <script>
+  import axios from 'axios'
   export default {
     data() {
       return {
-
+        prisonName: '', //监狱名称
+        zipCode: ''//监狱代码
+      }
+    },
+    methods:{
+      //添加监狱
+      addJail(){
+        axios.post('/jail/addPrison.do',{
+          prisonName:this.prisonName,
+          zipCode:this.zipCode
+        }).then(res=>{
+          if(res.data.code == 0) {
+            console.log(res.data.msg);
+          }
+        }).catch(err=>{
+          console.log(err);
+        })
+      },
+      back(){
+        this.$router.push({
+          path:'/prison_management'
+        })
       }
     }
   }

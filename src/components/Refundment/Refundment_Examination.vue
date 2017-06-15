@@ -14,7 +14,8 @@
             <div class="form-group col-xs-24">
 
               <div class="col-xs-20">
-                <select class="form-control">
+                <select class="form-control" v-model="jailId">
+                  <option v-for="jl in jailList"></option>
                   <option>长沙女子监狱</option>
                 </select>
               </div>
@@ -68,6 +69,7 @@
             </div>
           </div>
         </div>
+
       </div>
 
       <div class="col-xs-24 buttonBox">
@@ -95,133 +97,25 @@
             </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
-              <!--<a href="#" class="textBlue">编辑</a>-->
-              <router-link to="/user_management/edit_user" class="textBlue">编辑</router-link>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="selectBox"></div>
-            </td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>
-              <a href="#" class="textBlue">编辑</a>
-              <a href="#" class="textRed">删除</a>
-            </td>
-          </tr>
+            <tr>
+              <td>
+                <div class="selectBox"></div>
+              </td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>
+                <!--<a href="#" class="textBlue">编辑</a>-->
+                <router-link to="/user_management/edit_user" class="textBlue">同意</router-link>
+                <a href="#" class="textRed">拒绝</a>
+              </td>
+            </tr>
           </tbody>
         </table>
 
@@ -243,7 +137,14 @@
       return {
         isManage:true,
         toUrl:'',
-        fromUrl:''
+        fromUrl:'',
+        pageSize:'',//第几页
+        indexPage:'',//每页多少条
+        jailId:'',//监狱ID
+        prisonName:'',//监狱名称
+        phone:'',//电话
+        name:'',//家属姓名
+
       }
     },
     watch: {
@@ -280,7 +181,34 @@
 //      Page
 //    },
     methods:{
-
+      getRefundmentList(){
+        axios.get('/refund/getDrawbacks.do',{
+          params:{
+            pageSize:this.pageSize,
+            indexPage:this.indexPage,
+            jailId:this.jailId,
+            prisonName:this.prisonName,
+            phone:this.phone,
+            name:this.name
+          }
+        }).then(res => {
+          if (res.data.code == 0) {
+            this.orderList = res.data.data;
+          }
+        }).catch(err => {
+          console.log(err);
+        })
+      },
+      getJails(){
+        axios.get('/jail/getJails.do').then(res=>{
+          if(res.data.code == 0) {
+            console.log(res.data);
+            this.jailList = res.data.data;
+          }
+        }).catch(err=>{
+          console.log(err);
+        })
+      }
     },
     mounted(){
 //
@@ -292,6 +220,8 @@
       $('#datepicker1').datepicker({
         autoclose: true
       });
+
+      this.getRefundmentList();
     },
     updated(){
       //Date picker

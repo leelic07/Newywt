@@ -196,11 +196,9 @@
         }).catch(err=>{
           console.log(err);
         })
-      }
-
+      },
     },
     mounted(){
-
       //Date picker
       $('#datepicker').datepicker({
         autoclose: true

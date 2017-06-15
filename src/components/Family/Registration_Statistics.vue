@@ -33,6 +33,26 @@
             </div>
           </div>
 
+          <div class="col-xs-14 menuType">
+            <div class="form-group col-xs-24">
+
+              <div class="col-xs-4">
+                <label class="pull-left">监狱名称</label>
+              </div>
+
+              <div class="col-xs-5">
+                <select class="form-control" v-model="jailId">
+                  <option v-for="jl in jailList"></option>
+                  <!--<option>二级菜单</option>-->
+                  <!--<option>三级菜单</option>-->
+                  <!--<option>四级菜单</option>-->
+                  <!--<option>五级菜单</option>-->
+                </select>
+              </div>
+
+            </div>
+          </div>
+
         </div>
 
         <div class="col-xs-24 searchBox">
@@ -53,56 +73,20 @@
       <div class="col-xs-24 balanceTable">
         <table class="table table-responsive table-bordered text-center">
           <thead>
-          <tr>
-            <th>序号</th>
-            <th>日期</th>
-            <th>注册人数</th>
-            <th>所属监狱名称</th>
-          </tr>
+            <tr>
+              <th>序号</th>
+              <th>日期</th>
+              <th>注册人数</th>
+              <th>所属监狱名称</th>
+            </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-          </tr>
+            <tr v-for="rl,index in registrationList">
+              <td v-text="index">2</td>
+              <td v-text="rl.createdAt"></td>
+              <td v-text="rl.number"></td>
+              <td v-text="rl.jailId"></td>
+            </tr>
           </tbody>
         </table>
 
@@ -117,12 +101,20 @@
 </template>
 
 <script>
+  import axios from 'axios'
   export default {
     data() {
       return {
         isManage:true,
         toUrl:'',
-        fromUrl:''
+        fromUrl:'',
+        page:1,
+        rows:'',
+        jailId:'',
+//        startTime:'',
+//        endTime:''
+        registrationList:[],
+        jailList:[]
       }
     },
     watch: {
@@ -157,6 +149,39 @@
         this.$router.push({
           path:'/role_management/add_role'
         })
+      },
+      //获取注册列表
+      getRegistration(){
+        axios.get('report/registerPage.do',{
+            params:{
+              page:this.page,
+              rows:this.rows,
+              jailId:this.jailId,
+              startTime:this.dateFormat($('#datepicker').val()),
+              endTime:this.dateFormat($('#datepicker1').val())
+            }
+        }).then(res => {
+          if (res.data.code == 0) {
+
+//            if(this.parentMenuShow){
+//              this.pid = this.oneLevelMenuList[0].id;
+//            }
+            this.registrationList = res.data.data;
+          }
+        }).catch(err => {
+          console.log(err);
+        })
+      },
+      //获取所有监狱
+      getJails(){
+        axios.get('/jail/getJails.do').then(res=>{
+          if(res.data.code == 0) {
+            console.log(res.data);
+            this.jailList = res.data.data;
+          }
+        }).catch(err=>{
+            console.log(err);
+        })
       }
     },
     mounted(){
@@ -168,6 +193,8 @@
       $('#datepicker1').datepicker({
         autoclose: true
       });
+
+      this.getJails();
     },
     updated(){
       //Date picker

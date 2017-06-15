@@ -6,6 +6,7 @@ import router from './router'
 import axios from 'axios'
 import Filters from './filters'
 import Validate from '../static/js/validate.js'
+import Effection from '../static/js/effection.js'
 
 //声明过滤器
 Object.keys(Filters).forEach((key)=>Vue.filter(key,Filters[key]));

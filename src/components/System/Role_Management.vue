@@ -90,8 +90,8 @@
 
         <!--<Page></Page>-->
         <div class="tableFooter col-xs-24">
-
         </div>
+
       </div>
     </div>
     <router-view></router-view>
